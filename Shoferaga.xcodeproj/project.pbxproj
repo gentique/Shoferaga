@@ -7,8 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */; };
+		F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */; };
+		F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003F20ACED4300231F2B /* AvatarImageView.swift */; };
+		F80A004220ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */; };
+		F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */; };
 		F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360420ACD1E800DFD4B2 /* AppDelegate.swift */; };
-		F897360720ACD1E800DFD4B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360620ACD1E800DFD4B2 /* ViewController.swift */; };
+		F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */; };
 		F897360A20ACD1E800DFD4B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360820ACD1E800DFD4B2 /* Main.storyboard */; };
 		F897360C20ACD1E800DFD4B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F897360B20ACD1E800DFD4B2 /* Assets.xcassets */; };
 		F897360F20ACD1E800DFD4B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */; };
@@ -26,9 +31,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLogInButtonsView.swift; sourceTree = "<group>"; };
+		F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHWhatTypeOfUserViewController.swift; sourceTree = "<group>"; };
+		F80A003F20ACED4300231F2B /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
+		F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterUdhetarViewController.swift; sourceTree = "<group>"; };
+		F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterTaksistViewController.swift; sourceTree = "<group>"; };
 		F897360120ACD1E700DFD4B2 /* Shoferaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoferaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F897360420ACD1E800DFD4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F897360620ACD1E800DFD4B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMainViewController.swift; sourceTree = "<group>"; };
 		F897360920ACD1E800DFD4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		F897360B20ACD1E800DFD4B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F897360E20ACD1E800DFD4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +76,8 @@
 		F80A003820ACD22D00231F2B /* View */ = {
 			isa = PBXGroup;
 			children = (
+				F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */,
+				F80A003F20ACED4300231F2B /* AvatarImageView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -73,9 +85,20 @@
 		F80A003920ACD23100231F2B /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				F897360620ACD1E800DFD4B2 /* ViewController.swift */,
+				F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */,
+				F80A003C20ACE8E200231F2B /* Register */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		F80A003C20ACE8E200231F2B /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */,
+				F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */,
+				F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		F89735F820ACD1E700DFD4B2 = {
@@ -221,8 +244,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F897360720ACD1E800DFD4B2 /* ViewController.swift in Sources */,
+				F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */,
+				F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */,
+				F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */,
+				F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */,
 				F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */,
+				F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */,
+				F80A004220ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
