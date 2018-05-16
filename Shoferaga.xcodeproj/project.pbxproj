@@ -1,0 +1,492 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360420ACD1E800DFD4B2 /* AppDelegate.swift */; };
+		F897360720ACD1E800DFD4B2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360620ACD1E800DFD4B2 /* ViewController.swift */; };
+		F897360A20ACD1E800DFD4B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360820ACD1E800DFD4B2 /* Main.storyboard */; };
+		F897360C20ACD1E800DFD4B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F897360B20ACD1E800DFD4B2 /* Assets.xcassets */; };
+		F897360F20ACD1E800DFD4B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */; };
+		F897361A20ACD1E800DFD4B2 /* ShoferagaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897361920ACD1E800DFD4B2 /* ShoferagaTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		F897361620ACD1E800DFD4B2 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F89735F920ACD1E700DFD4B2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F897360020ACD1E700DFD4B2;
+			remoteInfo = Shoferaga;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		F897360120ACD1E700DFD4B2 /* Shoferaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoferaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F897360420ACD1E800DFD4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		F897360620ACD1E800DFD4B2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		F897360920ACD1E800DFD4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		F897360B20ACD1E800DFD4B2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F897360E20ACD1E800DFD4B2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		F897361020ACD1E800DFD4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F897361520ACD1E800DFD4B2 /* ShoferagaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoferagaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F897361920ACD1E800DFD4B2 /* ShoferagaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoferagaTests.swift; sourceTree = "<group>"; };
+		F897361B20ACD1E800DFD4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F89735FE20ACD1E700DFD4B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F897361220ACD1E800DFD4B2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F80A003720ACD22100231F2B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		F80A003820ACD22D00231F2B /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		F80A003920ACD23100231F2B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				F897360620ACD1E800DFD4B2 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		F89735F820ACD1E700DFD4B2 = {
+			isa = PBXGroup;
+			children = (
+				F897360320ACD1E700DFD4B2 /* Shoferaga */,
+				F897361820ACD1E800DFD4B2 /* ShoferagaTests */,
+				F897360220ACD1E700DFD4B2 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F897360220ACD1E700DFD4B2 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F897360120ACD1E700DFD4B2 /* Shoferaga.app */,
+				F897361520ACD1E800DFD4B2 /* ShoferagaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F897360320ACD1E700DFD4B2 /* Shoferaga */ = {
+			isa = PBXGroup;
+			children = (
+				F897360420ACD1E800DFD4B2 /* AppDelegate.swift */,
+				F80A003720ACD22100231F2B /* Model */,
+				F80A003820ACD22D00231F2B /* View */,
+				F80A003920ACD23100231F2B /* Controller */,
+				F897360820ACD1E800DFD4B2 /* Main.storyboard */,
+				F897360B20ACD1E800DFD4B2 /* Assets.xcassets */,
+				F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */,
+				F897361020ACD1E800DFD4B2 /* Info.plist */,
+			);
+			path = Shoferaga;
+			sourceTree = "<group>";
+		};
+		F897361820ACD1E800DFD4B2 /* ShoferagaTests */ = {
+			isa = PBXGroup;
+			children = (
+				F897361920ACD1E800DFD4B2 /* ShoferagaTests.swift */,
+				F897361B20ACD1E800DFD4B2 /* Info.plist */,
+			);
+			path = ShoferagaTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F897360020ACD1E700DFD4B2 /* Shoferaga */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F897361E20ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "Shoferaga" */;
+			buildPhases = (
+				F89735FD20ACD1E700DFD4B2 /* Sources */,
+				F89735FE20ACD1E700DFD4B2 /* Frameworks */,
+				F89735FF20ACD1E700DFD4B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Shoferaga;
+			productName = Shoferaga;
+			productReference = F897360120ACD1E700DFD4B2 /* Shoferaga.app */;
+			productType = "com.apple.product-type.application";
+		};
+		F897361420ACD1E800DFD4B2 /* ShoferagaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F897362120ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "ShoferagaTests" */;
+			buildPhases = (
+				F897361120ACD1E800DFD4B2 /* Sources */,
+				F897361220ACD1E800DFD4B2 /* Frameworks */,
+				F897361320ACD1E800DFD4B2 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				F897361720ACD1E800DFD4B2 /* PBXTargetDependency */,
+			);
+			name = ShoferagaTests;
+			productName = ShoferagaTests;
+			productReference = F897361520ACD1E800DFD4B2 /* ShoferagaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F89735F920ACD1E700DFD4B2 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0930;
+				LastUpgradeCheck = 0930;
+				ORGANIZATIONNAME = "Gentian Barileva";
+				TargetAttributes = {
+					F897360020ACD1E700DFD4B2 = {
+						CreatedOnToolsVersion = 9.3.1;
+					};
+					F897361420ACD1E800DFD4B2 = {
+						CreatedOnToolsVersion = 9.3.1;
+						TestTargetID = F897360020ACD1E700DFD4B2;
+					};
+				};
+			};
+			buildConfigurationList = F89735FC20ACD1E700DFD4B2 /* Build configuration list for PBXProject "Shoferaga" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F89735F820ACD1E700DFD4B2;
+			productRefGroup = F897360220ACD1E700DFD4B2 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F897360020ACD1E700DFD4B2 /* Shoferaga */,
+				F897361420ACD1E800DFD4B2 /* ShoferagaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F89735FF20ACD1E700DFD4B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F897360F20ACD1E800DFD4B2 /* LaunchScreen.storyboard in Resources */,
+				F897360C20ACD1E800DFD4B2 /* Assets.xcassets in Resources */,
+				F897360A20ACD1E800DFD4B2 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F897361320ACD1E800DFD4B2 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F89735FD20ACD1E700DFD4B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F897360720ACD1E800DFD4B2 /* ViewController.swift in Sources */,
+				F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		F897361120ACD1E800DFD4B2 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F897361A20ACD1E800DFD4B2 /* ShoferagaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		F897361720ACD1E800DFD4B2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F897360020ACD1E700DFD4B2 /* Shoferaga */;
+			targetProxy = F897361620ACD1E800DFD4B2 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		F897360820ACD1E800DFD4B2 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F897360920ACD1E800DFD4B2 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F897360E20ACD1E800DFD4B2 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F897361C20ACD1E800DFD4B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		F897361D20ACD1E800DFD4B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F897361F20ACD1E800DFD4B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YQP86PXBQJ;
+				INFOPLIST_FILE = Shoferaga/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barileva.Shoferaga;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F897362020ACD1E800DFD4B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YQP86PXBQJ;
+				INFOPLIST_FILE = Shoferaga/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barileva.Shoferaga;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		F897362220ACD1E800DFD4B2 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YQP86PXBQJ;
+				INFOPLIST_FILE = ShoferagaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barileva.ShoferagaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shoferaga.app/Shoferaga";
+			};
+			name = Debug;
+		};
+		F897362320ACD1E800DFD4B2 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = YQP86PXBQJ;
+				INFOPLIST_FILE = ShoferagaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.barileva.ShoferagaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Shoferaga.app/Shoferaga";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F89735FC20ACD1E700DFD4B2 /* Build configuration list for PBXProject "Shoferaga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F897361C20ACD1E800DFD4B2 /* Debug */,
+				F897361D20ACD1E800DFD4B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F897361E20ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "Shoferaga" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F897361F20ACD1E800DFD4B2 /* Debug */,
+				F897362020ACD1E800DFD4B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F897362120ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "ShoferagaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F897362220ACD1E800DFD4B2 /* Debug */,
+				F897362320ACD1E800DFD4B2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F89735F920ACD1E700DFD4B2 /* Project object */;
+}
