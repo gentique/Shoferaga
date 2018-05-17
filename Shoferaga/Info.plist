@@ -39,5 +39,9 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Access to camera or photo library to change the profile picture</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>To show you current location on the map</string>
 </dict>
 </plist>

@@ -10,7 +10,7 @@
 		F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */; };
 		F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */; };
 		F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003F20ACED4300231F2B /* AvatarImageView.swift */; };
-		F80A004220ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */; };
+		F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */; };
 		F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */; };
 		F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360420ACD1E800DFD4B2 /* AppDelegate.swift */; };
 		F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */; };
@@ -18,6 +18,11 @@
 		F897360C20ACD1E800DFD4B2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F897360B20ACD1E800DFD4B2 /* Assets.xcassets */; };
 		F897360F20ACD1E800DFD4B2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */; };
 		F897361A20ACD1E800DFD4B2 /* ShoferagaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897361920ACD1E800DFD4B2 /* ShoferagaTests.swift */; };
+		F8D30ABD20ADF97E007C6B6D /* NSObject+ClassSegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */; };
+		F8E771E720AE0F320037D247 /* SHLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771E620AE0F320037D247 /* SHLogInViewController.swift */; };
+		F8E771E920AE0FA50037D247 /* SHUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */; };
+		F8E771EB20AE10460037D247 /* SHTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */; };
+		F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EC20AE185B0037D247 /* SHAnnotation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +39,7 @@
 		F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLogInButtonsView.swift; sourceTree = "<group>"; };
 		F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHWhatTypeOfUserViewController.swift; sourceTree = "<group>"; };
 		F80A003F20ACED4300231F2B /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
-		F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterUdhetarViewController.swift; sourceTree = "<group>"; };
+		F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterUdhetareViewController.swift; sourceTree = "<group>"; };
 		F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterTaksistViewController.swift; sourceTree = "<group>"; };
 		F897360120ACD1E700DFD4B2 /* Shoferaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoferaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F897360420ACD1E800DFD4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -46,6 +51,11 @@
 		F897361520ACD1E800DFD4B2 /* ShoferagaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShoferagaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F897361920ACD1E800DFD4B2 /* ShoferagaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoferagaTests.swift; sourceTree = "<group>"; };
 		F897361B20ACD1E800DFD4B2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassSegueName.swift"; sourceTree = "<group>"; };
+		F8E771E620AE0F320037D247 /* SHLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLogInViewController.swift; sourceTree = "<group>"; };
+		F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHUdhetareViewController.swift; sourceTree = "<group>"; };
+		F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistViewController.swift; sourceTree = "<group>"; };
+		F8E771EC20AE185B0037D247 /* SHAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +79,7 @@
 		F80A003720ACD22100231F2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				F8E771EC20AE185B0037D247 /* SHAnnotation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -86,19 +97,22 @@
 			isa = PBXGroup;
 			children = (
 				F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */,
-				F80A003C20ACE8E200231F2B /* Register */,
+				F8E771E620AE0F320037D247 /* SHLogInViewController.swift */,
+				F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */,
+				F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */,
+				F80A003C20ACE8E200231F2B /* RegisterViewControllers */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
 		};
-		F80A003C20ACE8E200231F2B /* Register */ = {
+		F80A003C20ACE8E200231F2B /* RegisterViewControllers */ = {
 			isa = PBXGroup;
 			children = (
 				F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */,
-				F80A004120ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift */,
+				F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */,
 				F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */,
 			);
-			path = Register;
+			path = RegisterViewControllers;
 			sourceTree = "<group>";
 		};
 		F89735F820ACD1E700DFD4B2 = {
@@ -123,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				F897360420ACD1E800DFD4B2 /* AppDelegate.swift */,
+				F8D30ABB20ADF92F007C6B6D /* Extensions */,
 				F80A003720ACD22100231F2B /* Model */,
 				F80A003820ACD22D00231F2B /* View */,
 				F80A003920ACD23100231F2B /* Controller */,
@@ -141,6 +156,14 @@
 				F897361B20ACD1E800DFD4B2 /* Info.plist */,
 			);
 			path = ShoferagaTests;
+			sourceTree = "<group>";
+		};
+		F8D30ABB20ADF92F007C6B6D /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,10 +270,15 @@
 				F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */,
 				F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */,
 				F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */,
+				F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */,
 				F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */,
 				F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */,
+				F8E771EB20AE10460037D247 /* SHTaksistViewController.swift in Sources */,
 				F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */,
-				F80A004220ACF0DB00231F2B /* SHRegisterUdhetarViewController.swift in Sources */,
+				F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */,
+				F8D30ABD20ADF97E007C6B6D /* NSObject+ClassSegueName.swift in Sources */,
+				F8E771E720AE0F320037D247 /* SHLogInViewController.swift in Sources */,
+				F8E771E920AE0FA50037D247 /* SHUdhetareViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

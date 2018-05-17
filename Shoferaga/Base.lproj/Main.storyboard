@@ -117,10 +117,10 @@
             </objects>
             <point key="canvasLocation" x="1869" y="476"/>
         </scene>
-        <!--View Controller-->
+        <!--Log In View Controller-->
         <scene sceneID="U35-qW-SZN">
             <objects>
-                <viewController id="qFH-Z1-FQV" sceneMemberID="viewController">
+                <viewController id="qFH-Z1-FQV" customClass="SHLogInViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="PzR-1w-Ny6">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -148,16 +148,60 @@
                                 </state>
                                 <connections>
                                     <action selector="buttonsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Hb-u6-CRl"/>
+                                    <segue destination="4lL-ZS-bLe" kind="show" id="Jpp-uW-oi9"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="n4m-mX-a33"/>
                     </view>
+                    <connections>
+                        <segue destination="4lL-ZS-bLe" kind="show" identifier="SHUdhetareViewControllerSegue" id="8pY-ZC-pwP"/>
+                        <segue destination="w99-da-Oii" kind="show" identifier="SHTaksistViewController" id="mJv-zE-dE2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fXh-bi-ztl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1749.5999999999999" y="-896.40179910044981"/>
+        </scene>
+        <!--Taksist View Controller-->
+        <scene sceneID="Oot-L8-bIX">
+            <objects>
+                <viewController id="w99-da-Oii" customClass="SHTaksistViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fEi-8y-DhR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="GVc-Xh-7ky"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bv6-ef-I15" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2978" y="-666"/>
+        </scene>
+        <!--Udhetare View Controller-->
+        <scene sceneID="adK-Zh-eyL">
+            <objects>
+                <viewController id="4lL-ZS-bLe" customClass="SHUdhetareViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="1sH-Td-0DW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E9z-QR-xGk">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="N9w-QK-nu4"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="E9z-QR-xGk" id="l5V-1S-9XF"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UPd-ep-xUr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2776.8000000000002" y="-1514.392803598201"/>
         </scene>
         <!--Register Taksist View Controller-->
         <scene sceneID="DW0-Za-feo">
@@ -174,15 +218,15 @@
             </objects>
             <point key="canvasLocation" x="3135" y="931"/>
         </scene>
-        <!--Register Udhetar View Controller-->
+        <!--Register Udhetare View Controller-->
         <scene sceneID="5C2-6I-Mhl">
             <objects>
-                <viewController id="oDX-Zk-F9x" customClass="SHRegisterUdhetarViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="oDX-Zk-F9x" customClass="SHRegisterUdhetareViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5FH-hC-bBY">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-App-83.5x83.5" translatesAutoresizingMaskIntoConstraints="NO" id="AaT-oi-M9x" customClass="AvatarImageView" customModule="Shoferaga" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Icon-App-83.5x83.5" translatesAutoresizingMaskIntoConstraints="NO" id="AaT-oi-M9x" customClass="AvatarImageView" customModule="Shoferaga" customModuleProvider="target">
                                 <rect key="frame" x="156" y="86" width="62" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -207,7 +251,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone #" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="H3b-Ku-fwi">
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Phone #" textAlignment="center" minimumFontSize="3" translatesAutoresizingMaskIntoConstraints="NO" id="H3b-Ku-fwi">
                                 <rect key="frame" x="139" y="259" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
@@ -239,10 +283,20 @@
                                     <action selector="buttonsPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="wZi-6b-nlv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DJ1-vQ-Co2">
+                                <rect key="frame" x="139" y="76" width="97" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeProfilePicturePressed:" destination="oDX-Zk-F9x" eventType="touchUpInside" id="59k-nK-AoL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="n4m-UQ-d0e"/>
                     </view>
+                    <connections>
+                        <outlet property="profilePicture" destination="AaT-oi-M9x" id="j1o-r2-euA"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ymy-IN-ghK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -270,4 +324,7 @@
     <resources>
         <image name="Icon-App-83.5x83.5" width="83" height="83"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="8pY-ZC-pwP"/>
+    </inferredMetricsTieBreakers>
 </document>

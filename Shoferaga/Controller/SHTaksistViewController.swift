@@ -1,5 +1,5 @@
 //
-//  SHUdhetarViewController.swift
+//  SHTaksistViewController.swift
 //  Shoferaga
 //
 //  Created by Gentian Barileva on 5/17/18.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SHRegisterUdhetarViewController: UIViewController {
+class SHTaksistViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
