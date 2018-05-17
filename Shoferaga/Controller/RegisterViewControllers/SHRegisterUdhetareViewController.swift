@@ -51,8 +51,13 @@ extension SHRegisterUdhetareViewController: UIImagePickerControllerDelegate, UIN
         let actionSheet = UIAlertController(title: "", message: "", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: { (action: UIAlertAction ) in
-            imagePickerController.sourceType = .camera
-            self.present(imagePickerController, animated: true, completion: nil)
+            if UIImagePickerController.isSourceTypeAvailable(.camera){
+                imagePickerController.sourceType = .camera
+                self.present(imagePickerController, animated: true, completion: nil)
+            }else{
+                print("Camera not available")
+            }
+
         }))
         actionSheet.addAction(UIAlertAction(title: "Chose from library", style: .default, handler: { (action: UIAlertAction ) in
             imagePickerController.sourceType = .photoLibrary
