@@ -7,11 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13E87A1710CAED774C85737E /* Pods_Shoferaga.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C4A2281EC5B40064B9CB1BE2 /* Pods_Shoferaga.framework */; };
+		C4AAA8EF1BFE051220F57A6C /* Pods_ShoferagaTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 674D810BC0F2076371EE125A /* Pods_ShoferagaTests.framework */; };
 		F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */; };
 		F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */; };
 		F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A003F20ACED4300231F2B /* AvatarImageView.swift */; };
 		F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */; };
 		F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */; };
+		F811456220B0599E00F6AFCA /* SHTaksistWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811456120B0599E00F6AFCA /* SHTaksistWorkViewController.swift */; };
+		F8435AA920AF927300C51EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8435AA820AF927300C51EBC /* GoogleService-Info.plist */; };
+		F89013D020B035450018BE3F /* Udhetare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89013CF20B035450018BE3F /* Udhetare.swift */; };
 		F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360420ACD1E800DFD4B2 /* AppDelegate.swift */; };
 		F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */; };
 		F897360A20ACD1E800DFD4B2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F897360820ACD1E800DFD4B2 /* Main.storyboard */; };
@@ -21,7 +26,7 @@
 		F8D30ABD20ADF97E007C6B6D /* NSObject+ClassSegueName.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */; };
 		F8E771E720AE0F320037D247 /* SHLogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771E620AE0F320037D247 /* SHLogInViewController.swift */; };
 		F8E771E920AE0FA50037D247 /* SHUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */; };
-		F8E771EB20AE10460037D247 /* SHTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */; };
+		F8E771EB20AE10460037D247 /* SHTaksistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EA20AE10460037D247 /* SHTaksistListViewController.swift */; };
 		F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EC20AE185B0037D247 /* SHAnnotation.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,11 +41,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C771E0C52DB01EF1C349F6E /* Pods-ShoferagaTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoferagaTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ShoferagaTests/Pods-ShoferagaTests.debug.xcconfig"; sourceTree = "<group>"; };
+		2F6E63EA5B8445C49FF270CA /* Pods-Shoferaga.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shoferaga.release.xcconfig"; path = "Pods/Target Support Files/Pods-Shoferaga/Pods-Shoferaga.release.xcconfig"; sourceTree = "<group>"; };
+		37908AC225DCA8C5C3C81180 /* Pods-Shoferaga.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Shoferaga.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Shoferaga/Pods-Shoferaga.debug.xcconfig"; sourceTree = "<group>"; };
+		674D810BC0F2076371EE125A /* Pods_ShoferagaTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ShoferagaTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89F40F733EDA1FFF0498180A /* Pods-ShoferagaTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ShoferagaTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ShoferagaTests/Pods-ShoferagaTests.release.xcconfig"; sourceTree = "<group>"; };
+		C4A2281EC5B40064B9CB1BE2 /* Pods_Shoferaga.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Shoferaga.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainLogInButtonsView.swift; sourceTree = "<group>"; };
 		F80A003D20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHWhatTypeOfUserViewController.swift; sourceTree = "<group>"; };
 		F80A003F20ACED4300231F2B /* AvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarImageView.swift; sourceTree = "<group>"; };
 		F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterUdhetareViewController.swift; sourceTree = "<group>"; };
 		F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterTaksistViewController.swift; sourceTree = "<group>"; };
+		F811456120B0599E00F6AFCA /* SHTaksistWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistWorkViewController.swift; sourceTree = "<group>"; };
+		F8435AA820AF927300C51EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		F89013CF20B035450018BE3F /* Udhetare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Udhetare.swift; sourceTree = "<group>"; };
 		F897360120ACD1E700DFD4B2 /* Shoferaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoferaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F897360420ACD1E800DFD4B2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHMainViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +68,7 @@
 		F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+ClassSegueName.swift"; sourceTree = "<group>"; };
 		F8E771E620AE0F320037D247 /* SHLogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHLogInViewController.swift; sourceTree = "<group>"; };
 		F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHUdhetareViewController.swift; sourceTree = "<group>"; };
-		F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistViewController.swift; sourceTree = "<group>"; };
+		F8E771EA20AE10460037D247 /* SHTaksistListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistListViewController.swift; sourceTree = "<group>"; };
 		F8E771EC20AE185B0037D247 /* SHAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAnnotation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,6 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				13E87A1710CAED774C85737E /* Pods_Shoferaga.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,16 +85,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4AAA8EF1BFE051220F57A6C /* Pods_ShoferagaTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FC44B602A23B8221F09559B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				C4A2281EC5B40064B9CB1BE2 /* Pods_Shoferaga.framework */,
+				674D810BC0F2076371EE125A /* Pods_ShoferagaTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		9E9EE52DC9212D240D8EF912 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				37908AC225DCA8C5C3C81180 /* Pods-Shoferaga.debug.xcconfig */,
+				2F6E63EA5B8445C49FF270CA /* Pods-Shoferaga.release.xcconfig */,
+				2C771E0C52DB01EF1C349F6E /* Pods-ShoferagaTests.debug.xcconfig */,
+				89F40F733EDA1FFF0498180A /* Pods-ShoferagaTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		F80A003720ACD22100231F2B /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				F8E771EC20AE185B0037D247 /* SHAnnotation.swift */,
+				F89013CF20B035450018BE3F /* Udhetare.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -99,7 +136,8 @@
 				F897360620ACD1E800DFD4B2 /* SHMainViewController.swift */,
 				F8E771E620AE0F320037D247 /* SHLogInViewController.swift */,
 				F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */,
-				F8E771EA20AE10460037D247 /* SHTaksistViewController.swift */,
+				F8E771EA20AE10460037D247 /* SHTaksistListViewController.swift */,
+				F811456120B0599E00F6AFCA /* SHTaksistWorkViewController.swift */,
 				F80A003C20ACE8E200231F2B /* RegisterViewControllers */,
 			);
 			path = Controller;
@@ -121,6 +159,8 @@
 				F897360320ACD1E700DFD4B2 /* Shoferaga */,
 				F897361820ACD1E800DFD4B2 /* ShoferagaTests */,
 				F897360220ACD1E700DFD4B2 /* Products */,
+				9E9EE52DC9212D240D8EF912 /* Pods */,
+				4FC44B602A23B8221F09559B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -144,6 +184,7 @@
 				F897360820ACD1E800DFD4B2 /* Main.storyboard */,
 				F897360B20ACD1E800DFD4B2 /* Assets.xcassets */,
 				F897360D20ACD1E800DFD4B2 /* LaunchScreen.storyboard */,
+				F8435AA820AF927300C51EBC /* GoogleService-Info.plist */,
 				F897361020ACD1E800DFD4B2 /* Info.plist */,
 			);
 			path = Shoferaga;
@@ -173,9 +214,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F897361E20ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "Shoferaga" */;
 			buildPhases = (
+				158ED5D69EF7DA28FD75BCBC /* [CP] Check Pods Manifest.lock */,
 				F89735FD20ACD1E700DFD4B2 /* Sources */,
 				F89735FE20ACD1E700DFD4B2 /* Frameworks */,
 				F89735FF20ACD1E700DFD4B2 /* Resources */,
+				D772FDD83DE81FB2ACB93584 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -190,6 +233,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F897362120ACD1E800DFD4B2 /* Build configuration list for PBXNativeTarget "ShoferagaTests" */;
 			buildPhases = (
+				E1EA1C07048A93B2B23D8486 /* [CP] Check Pods Manifest.lock */,
 				F897361120ACD1E800DFD4B2 /* Sources */,
 				F897361220ACD1E800DFD4B2 /* Frameworks */,
 				F897361320ACD1E800DFD4B2 /* Resources */,
@@ -247,6 +291,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F8435AA920AF927300C51EBC /* GoogleService-Info.plist in Resources */,
 				F897360F20ACD1E800DFD4B2 /* LaunchScreen.storyboard in Resources */,
 				F897360C20ACD1E800DFD4B2 /* Assets.xcassets in Resources */,
 				F897360A20ACD1E800DFD4B2 /* Main.storyboard in Resources */,
@@ -262,18 +307,85 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		158ED5D69EF7DA28FD75BCBC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Shoferaga-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D772FDD83DE81FB2ACB93584 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Shoferaga/Pods-Shoferaga-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Shoferaga/Pods-Shoferaga-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E1EA1C07048A93B2B23D8486 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ShoferagaTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F89735FD20ACD1E700DFD4B2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F897360720ACD1E800DFD4B2 /* SHMainViewController.swift in Sources */,
+				F89013D020B035450018BE3F /* Udhetare.swift in Sources */,
+				F811456220B0599E00F6AFCA /* SHTaksistWorkViewController.swift in Sources */,
 				F80A004020ACED4300231F2B /* AvatarImageView.swift in Sources */,
 				F80A003B20ACD81000231F2B /* MainLogInButtonsView.swift in Sources */,
 				F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */,
 				F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */,
 				F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */,
-				F8E771EB20AE10460037D247 /* SHTaksistViewController.swift in Sources */,
+				F8E771EB20AE10460037D247 /* SHTaksistListViewController.swift in Sources */,
 				F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */,
 				F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */,
 				F8D30ABD20ADF97E007C6B6D /* NSObject+ClassSegueName.swift in Sources */,
@@ -436,6 +548,7 @@
 		};
 		F897361F20ACD1E800DFD4B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 37908AC225DCA8C5C3C81180 /* Pods-Shoferaga.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -454,6 +567,7 @@
 		};
 		F897362020ACD1E800DFD4B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2F6E63EA5B8445C49FF270CA /* Pods-Shoferaga.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -472,6 +586,7 @@
 		};
 		F897362220ACD1E800DFD4B2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C771E0C52DB01EF1C349F6E /* Pods-ShoferagaTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -493,6 +608,7 @@
 		};
 		F897362320ACD1E800DFD4B2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 89F40F733EDA1FFF0498180A /* Pods-ShoferagaTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";

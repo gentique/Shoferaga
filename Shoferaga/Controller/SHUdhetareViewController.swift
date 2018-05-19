@@ -8,20 +8,27 @@
 
 import UIKit
 import MapKit
+import Firebase
+import FirebaseAuth
+
 
 class SHUdhetareViewController: UIViewController {
     
+    var currentUser: Udhetare?
+    
     let locationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
+    let FIRUserID = Auth.auth().currentUser!.uid
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
+        print(currentUser!.email)
     }
 
     override func didReceiveMemoryWarning() {
@@ -34,21 +41,50 @@ class SHUdhetareViewController: UIViewController {
     func updateMap(){
         let currentLocationAnnotation = SHAnnotation(locationName: "Your Current Location", coordinate: currentLocation!)
         mapView.setCenter(currentLocation!, animated: true)
+        
+//        let currentUser = Auth.auth().currentUser!
+//        let userInfo: [String : Any] = ["Name" : curren, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text!]
+        sendLocationToFIR()
         mapView.addAnnotation(currentLocationAnnotation)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func sendLocationToFIR(){
+        let ref = Database.database().reference().child("Users/\(FIRUserID)")
+        currentUser!.lat = currentLocation!.latitude
+        currentUser!.lon = currentLocation!.longitude
+        ref.updateChildValues(["lon" : currentLocation!.longitude , "lat" : currentLocation!.latitude])
+        
     }
-    */
+    
+    
+    @IBAction func requestButton(_ sender: Any) {
+        let userInfoDict: [String : Any] = ["Name" : currentUser!.name,
+                                            "Surname" : currentUser!.surname,
+                                            "Phone Number" : currentUser!.phoneNumber ,
+                                            "Email" : currentUser!.email ,
+                                            "Money" : currentUser!.money ,
+                                            "Worker" : false,
+                                            "lat" : currentUser!.lat ,
+                                            "lon" : currentUser!.lon,
+                                            "Accepted" : false]
+        
+        Database.database().reference().child("Request/\(FIRUserID)").setValue(userInfoDict)
+    }
+    
+    func test(){
+        Database.database().reference().child("Request").observe(.value) { (snapshot) in
+            print("FIRED UP!")
+            let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
+            print(snapshotValue)
+        }
+    }
+    
 
 }
+
+
+
+//MARK: - Location Manager
 extension SHUdhetareViewController: CLLocationManagerDelegate{
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -57,8 +93,8 @@ extension SHUdhetareViewController: CLLocationManagerDelegate{
             locationManager.stopUpdatingLocation()
             
             let test = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
-            
             currentLocation = test
+            
             updateMap()
             locationManager.delegate = nil
         }

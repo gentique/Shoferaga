@@ -7,38 +7,59 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SHRegisterUdhetareViewController: UIViewController  {
-
+    
+    @IBOutlet weak var passwordTxtField: UITextField!
+    @IBOutlet weak var emailTxtField: UITextField!
+    @IBOutlet weak var phoneNumberTxtField: UITextField!
+    @IBOutlet weak var surnameTxtField: UITextField!
+    @IBOutlet weak var nameTxtField: UITextField!
+    @IBOutlet weak var profilePicture: AvatarImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    @IBOutlet weak var profilePicture: AvatarImageView!
+    
     
     @IBAction func changeProfilePicturePressed(_ sender: Any) {
         showImagePickerActionSheet()
     }
     
+    @IBAction func registerButton(_ sender: Any) {
 
+        //TODO: Needs checks for textields
+        //TODO: Upload Picture
+        Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, errorHere) in
+
+            let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text! , "Email" : self.emailTxtField.text! , "Money" : 50 , "Worker" : false, "lat" : 0 , "lon" : 0]
+            Database.database().reference().child("Users").child(user!.uid).setValue(userInfo)
+            print("SAVED ALL")
+        }
+        
+    }
+    
     
     /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+     // MARK: - Navigation
+     
+     // In a storyboard-based application, you will often want to do a little preparation before navigation
+     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+     // Get the new view controller using segue.destinationViewController.
+     // Pass the selected object to the new view controller.
+     }
+     */
+    
 }
 
 // MARK: - ImagePicker
@@ -57,7 +78,7 @@ extension SHRegisterUdhetareViewController: UIImagePickerControllerDelegate, UIN
             }else{
                 print("Camera not available")
             }
-
+            
         }))
         actionSheet.addAction(UIAlertAction(title: "Chose from library", style: .default, handler: { (action: UIAlertAction ) in
             imagePickerController.sourceType = .photoLibrary

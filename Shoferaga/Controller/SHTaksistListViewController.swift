@@ -7,11 +7,15 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
-class SHTaksistViewController: UIViewController {
+class SHTaksistListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadRequests()
+        
 
         // Do any additional setup after loading the view.
     }
@@ -20,16 +24,12 @@ class SHTaksistViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func loadRequests(){
+        Database.database().reference().child("Request").observe(.childAdded) { (snapshot) in
+            let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
+        }
+    }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

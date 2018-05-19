@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    //let usersDict: [String : Any] = ["Name" : "Gentian" , "Surname" : "Barileva" , "Money" : 370]
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        FirebaseApp.configure()
+//        Database.database().reference().child("Users").child("-LCpXEMj5g258B44VtSG").updateChildValues(["Money":200,"Name" : "BABA" ])
+        
+
         return true
     }
 
