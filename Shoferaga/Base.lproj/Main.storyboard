@@ -293,16 +293,8 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="E9z-QR-xGk">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="231"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="325"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tr-CB-RF6">
-                                <rect key="frame" x="130" y="440" width="115" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Hajde Shoferaga"/>
-                                <connections>
-                                    <action selector="requestButton:" destination="4lL-ZS-bLe" eventType="touchUpInside" id="hXR-Bb-9x7"/>
-                                </connections>
-                            </button>
                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu ta gjet shoferin" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dgr-bs-vhf">
                                 <rect key="frame" x="118" y="380" width="138" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -312,6 +304,13 @@
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="mwe-JX-KZz">
                                 <rect key="frame" x="264" y="381" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tr-CB-RF6">
+                                <rect key="frame" x="130" y="472" width="115" height="30"/>
+                                <state key="normal" title="Hajde Shoferaga"/>
+                                <connections>
+                                    <action selector="requestButton:" destination="4lL-ZS-bLe" eventType="touchUpInside" id="hXR-Bb-9x7"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -320,8 +319,10 @@
                             <constraint firstItem="mwe-JX-KZz" firstAttribute="leading" secondItem="dgr-bs-vhf" secondAttribute="trailing" constant="8" id="6Ih-4w-reZ"/>
                             <constraint firstItem="E9z-QR-xGk" firstAttribute="trailing" secondItem="N9w-QK-nu4" secondAttribute="trailing" id="A5a-nB-Pe8"/>
                             <constraint firstItem="E9z-QR-xGk" firstAttribute="leading" secondItem="N9w-QK-nu4" secondAttribute="leading" id="Ch5-DZ-9zN"/>
-                            <constraint firstItem="mwe-JX-KZz" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="150" id="LxC-g2-wAp"/>
-                            <constraint firstItem="dgr-bs-vhf" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="149" id="PD7-ga-TAh"/>
+                            <constraint firstItem="mwe-JX-KZz" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="56" id="LxC-g2-wAp"/>
+                            <constraint firstItem="dgr-bs-vhf" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="55" id="PD7-ga-TAh"/>
+                            <constraint firstItem="5tr-CB-RF6" firstAttribute="centerX" secondItem="dgr-bs-vhf" secondAttribute="centerX" id="lsP-X4-gqb"/>
+                            <constraint firstItem="5tr-CB-RF6" firstAttribute="top" secondItem="dgr-bs-vhf" secondAttribute="bottom" constant="71" id="rrW-CH-uAo"/>
                             <constraint firstItem="dgr-bs-vhf" firstAttribute="leading" secondItem="N9w-QK-nu4" secondAttribute="leading" constant="118" id="vRm-AM-sfO"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="N9w-QK-nu4"/>
@@ -329,6 +330,7 @@
                     <connections>
                         <outlet property="indicatorView" destination="mwe-JX-KZz" id="M3G-Ro-uYV"/>
                         <outlet property="mapView" destination="E9z-QR-xGk" id="l5V-1S-9XF"/>
+                        <outlet property="requestButton" destination="5tr-CB-RF6" id="g0C-xC-q8u"/>
                         <outlet property="statusLabel" destination="dgr-bs-vhf" id="EoY-xQ-ssM"/>
                     </connections>
                 </viewController>

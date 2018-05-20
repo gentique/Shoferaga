@@ -19,6 +19,7 @@ class SHTaksistWorkViewController: UIViewController {
     var currentPlacemark: MKPlacemark?
     let locationManager = CLLocationManager()
     var postRefHandle: DatabaseHandle!
+    var udhetare = Udhetare()
     @IBOutlet weak var idLabel: UILabel!
     
     override func viewDidLoad() {
@@ -49,13 +50,20 @@ class SHTaksistWorkViewController: UIViewController {
     func getRequestInfo(){
         Database.database().reference().child("Request/\(refID!)").observeSingleEvent(of: .value) { (snapshot) in
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
+            
             let lat = snapshotValue["lat"] as! Double
             let lon = snapshotValue["lon"] as! Double
-            print("THIS IS LONGTIDUDE: \(lon) ")
+            let name = snapshotValue["Name"] as! String
+            let surname = snapshotValue["Surname"] as! String
+            
+            self.udhetare.name = name
+            self.udhetare.surname = surname
+            //tolazy
+            
             let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             self.currentPlacemark = MKPlacemark(coordinate: coordinates)
             
-            self.updateMap(with: coordinates)
+            self.updateMap(with: coordinates, and: "\(self.udhetare.name) \(self.udhetare.surname)")
             print(coordinates)
             print(snapshotValue)
             
@@ -65,6 +73,7 @@ class SHTaksistWorkViewController: UIViewController {
             //copy the current data to InProgress
             Database.database().reference().child("InProgress/\(self.refID!)").setValue(dict)
             self.observeInProgress()
+            self.deleteRequestRef()
         }
     }
 
@@ -78,8 +87,8 @@ class SHTaksistWorkViewController: UIViewController {
         
     }
     
-    func updateMap(with coor: CLLocationCoordinate2D){
-        let currentLocationAnnotation = SHAnnotation(title: "Location", locationName: "Your Current Location", coordinate: coor)
+    func updateMap(with coor: CLLocationCoordinate2D, and name: String){
+        let currentLocationAnnotation = SHAnnotation(title: "Udhetari yt", locationName: name, coordinate: coor)
         mapView.setCenter(coor, animated: true)
         mapView.addAnnotation(currentLocationAnnotation)
     }

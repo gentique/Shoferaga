@@ -16,11 +16,12 @@ class SHUdhetareViewController: UIViewController {
     
     var currentUser: Udhetare?
     
+    @IBOutlet weak var requestButton: UIButton!
     let locationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
     let FIRUserID = Auth.auth().currentUser!.uid
-    var testTEST: MKMapItem?
     var postRefHandle: DatabaseHandle!
+    var isCenteredOnce = false
     
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
@@ -32,10 +33,9 @@ class SHUdhetareViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.delegate = self
-        mapView.showsUserLocation = true
-
+        
         print(currentUser!.email)
-
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -46,20 +46,30 @@ class SHUdhetareViewController: UIViewController {
     
     //MARK: Update map for Matching driver or device
     func updateMap(for type: Int, lat: Double, lon: Double){
+        let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: lon)
+        
         switch type {
-            // update map when driver match is found (display where the driver is)
+        // update map when driver match is found (display where the driver is)
         case 0:
-            let testAnno = SHAnnotation(title: "Location", locationName: "Current location", coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon))
-            mapView.setCenter(currentLocation!, animated: true)
+            let testAnno = SHAnnotation(title: "Shoferaga", locationName: "Knej o", coordinate: coordinate)
+            mapView.setCenter(coordinate, animated: true)
             //qit funksion duhet me e limitu se po rrin tu kriju shum annotations
             mapView.removeAnnotation(testAnno)
             mapView.addAnnotation(testAnno)
         case 1:
             // send device location to firebase
             sendLocationToFIR()
+            if !isCenteredOnce{
+                mapView.setCenter(coordinate, animated: false)
+                isCenteredOnce = true
+            }
+
+            
+            
         default:
             return
         }
+        
     }
     //MARK:- Firebase
     func sendLocationToFIR(){
@@ -74,7 +84,7 @@ class SHUdhetareViewController: UIViewController {
         observeRequest()
         indicatorView.startAnimating()
         statusLabel.isHidden = false
-
+        
         
         let userInfoDict: [String : Any] = ["Name" : currentUser!.name,
                                             "Surname" : currentUser!.surname,
@@ -101,6 +111,7 @@ class SHUdhetareViewController: UIViewController {
                 Database.database().reference().child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
                 self.statusLabel.text = "Tu e kqyr ku o.. "
                 self.observeInProgress()
+                self.requestButton.isEnabled = false
                 
             }
         }
@@ -116,6 +127,7 @@ class SHUdhetareViewController: UIViewController {
                 self.statusLabel.text = "Shoferi u gjet!"
                 self.indicatorView.stopAnimating()
                 self.updateMap(for: 0, lat: shoferLat, lon: shoferLon)
+                
             }
         })
         
@@ -166,7 +178,7 @@ extension SHUdhetareViewController: CLLocationManagerDelegate{
         if location.horizontalAccuracy > 0 {
             let test = CLLocationCoordinate2D(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
             currentLocation = test
-            updateMap(for: 1, lat: 0, lon: 0)
+            updateMap(for: 1, lat: location.coordinate.latitude, lon: location.coordinate.longitude)
             print(test)
             print("Location updated, sending updates to the mapview")
         }
