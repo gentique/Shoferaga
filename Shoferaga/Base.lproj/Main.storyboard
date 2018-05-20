@@ -278,6 +278,7 @@
                     <connections>
                         <outlet property="idLabel" destination="zkX-nf-Dtq" id="DXv-UG-6Jq"/>
                         <outlet property="mapView" destination="EN6-Uh-4RG" id="rp2-pE-djr"/>
+                        <outlet property="navigationButton" destination="62d-Vb-hOW" id="HCP-M8-m8e"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YCB-LE-HEr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -306,6 +307,9 @@
                             </activityIndicatorView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5tr-CB-RF6">
                                 <rect key="frame" x="130" y="472" width="115" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="115" id="Ida-gL-ICF"/>
+                                </constraints>
                                 <state key="normal" title="Hajde Shoferaga"/>
                                 <connections>
                                     <action selector="requestButton:" destination="4lL-ZS-bLe" eventType="touchUpInside" id="hXR-Bb-9x7"/>
@@ -493,6 +497,7 @@
                         <outlet property="passwordTxtField" destination="ncG-pD-fgy" id="y9L-Nk-pXx"/>
                         <outlet property="phoneNumberTxtField" destination="H3b-Ku-fwi" id="Ycf-w7-GdY"/>
                         <outlet property="profilePicture" destination="AaT-oi-M9x" id="j1o-r2-euA"/>
+                        <outlet property="registerButton" destination="7V2-oz-E9P" id="GID-uJ-6dV"/>
                         <outlet property="surnameTxtField" destination="Ntg-20-C66" id="cwI-fX-GM9"/>
                     </connections>
                 </viewController>

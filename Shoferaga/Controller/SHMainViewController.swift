@@ -19,7 +19,6 @@ class SHMainViewController: UIViewController {
         // nese du me u bo shum perfeksionist ateher muna me e thirr qita ma posht me protocols and delegate
         if !(navigationController?.isNavigationBarHidden)!{
             self.navigationController?.setNavigationBarHidden(true, animated: true)
-
         }
     }
 

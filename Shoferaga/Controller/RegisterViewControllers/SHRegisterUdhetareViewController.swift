@@ -9,9 +9,11 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import SVProgressHUD
 
 class SHRegisterUdhetareViewController: UIViewController  {
     
+    @IBOutlet weak var registerButton: MainLogInButtonsView!
     @IBOutlet weak var passwordTxtField: UITextField!
     @IBOutlet weak var emailTxtField: UITextField!
     @IBOutlet weak var phoneNumberTxtField: UITextField!
@@ -38,27 +40,51 @@ class SHRegisterUdhetareViewController: UIViewController  {
     
     @IBAction func registerButton(_ sender: Any) {
 
-        //TODO: Needs checks for textields
+        //TODO: Needs checks for textields, or maybe not
         //TODO: Upload Picture
-        Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, errorHere) in
-
+        registerButton.isEnabled = false
+        Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
+            if error != nil{
+                SVProgressHUD.show(withStatus: "Error")
+                SVProgressHUD.dismiss(withDelay: 2)
+                self.registerButton.isEnabled = true
+                return
+            }
             let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text! , "Email" : self.emailTxtField.text! , "Money" : 50 , "Worker" : false, "lat" : 0 , "lon" : 0]
-            Database.database().reference().child("Users").child(user!.uid).setValue(userInfo)
+            
+            let udhetare = Udhetare()
+            udhetare.email = self.emailTxtField.text!
+            udhetare.lat = 0
+            udhetare.lon = 0
+            udhetare.money = 50
+            udhetare.name = self.nameTxtField.text!
+            udhetare.phoneNumber = self.phoneNumberTxtField.text!
+            udhetare.surname = self.surnameTxtField.text!
+            udhetare.worker = false
+            
+            let refID = user?.uid
+            Database.database().reference().child("Users/\(refID!)").setValue(userInfo, withCompletionBlock: { (error, ref) in
+                if error != nil{
+                    SVProgressHUD.show(withStatus: "Error")
+                    SVProgressHUD.dismiss(withDelay: 2)
+                    self.registerButton.isEnabled = true
+
+                } else{
+                    SVProgressHUD.show(withStatus: "Success")
+                    SVProgressHUD.dismiss(withDelay: 1, completion: {
+                        let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHUdhetareViewController.className) as! SHUdhetareViewController
+                        udhetareVC.currentUser = udhetare
+                        self.navigationController?.pushViewController(udhetareVC, animated: true)
+                    })
+
+                }
+            })
             print("SAVED ALL")
         }
         
+        
     }
-    
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }
 

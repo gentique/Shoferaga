@@ -13,6 +13,7 @@ import MapKit
 
 class SHTaksistWorkViewController: UIViewController {
 
+    @IBOutlet weak var navigationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
     var refID: String?
     var currentLocation: CLLocationCoordinate2D?
@@ -36,6 +37,9 @@ class SHTaksistWorkViewController: UIViewController {
         
         Database.database().reference().child("Request/\(refID!)").updateChildValues(["Accepted" : true])
         getRequestInfo()
+        //TODO: On viewDidLoad navbar should be hidden, after the work order is done navbar should appear again so that the user can select another job from the queue
+        
+        //navigationItem.hidesBackButton = true
         
     }
     
@@ -80,11 +84,12 @@ class SHTaksistWorkViewController: UIViewController {
     func deleteRequestRef(){
         Database.database().reference().child("Request/\(self.refID!)").removeValue()
     }
+    
+    //TODO: need to set completion status from both sides, then set job as finished
     func observeInProgress(){
         postRefHandle = Database.database().reference().child("InProgress/\(refID!)").observe(.value, with: { (snapshot) in
             print(snapshot.value)
-        })
-        
+        }) 
     }
     
     func updateMap(with coor: CLLocationCoordinate2D, and name: String){
@@ -125,6 +130,7 @@ class SHTaksistWorkViewController: UIViewController {
             
             let routeRect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(routeRect), animated: true)
+            self.navigationButton.isEnabled = false
         }
     }
 

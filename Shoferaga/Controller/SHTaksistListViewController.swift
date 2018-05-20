@@ -46,6 +46,8 @@ class SHTaksistListViewController: UIViewController {
     func loadRequests(){
         Database.database().reference().child("Request").observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            print(snapshotValue)
             let name = snapshotValue["Name"]
             let lat = snapshotValue["lat"]
             let lon = snapshotValue["lon"]
@@ -58,16 +60,17 @@ class SHTaksistListViewController: UIViewController {
             userInfo.FIRKey = snapshot.key
             
             self.list.append(userInfo)
+            
             self.tableView.reloadData()
             
         }
     }
     
-    var tableRowTouched: Int = 0
+    var FIRKey = ""
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SHTaksistWorkViewController.segueName{
             if let taksistWorkVC = segue.destination as? SHTaksistWorkViewController{
-                taksistWorkVC.refID = list[tableRowTouched].FIRKey
+                taksistWorkVC.refID = FIRKey
                 taksistWorkVC.currentLocation = currentLocation!
             }
         }
@@ -130,10 +133,12 @@ extension SHTaksistListViewController: UITableViewDataSource, UITableViewDelegat
         return UdhetareListCell()
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-        tableRowTouched = indexPath.row
+        FIRKey = list[indexPath.row].FIRKey
+        list.remove(at: indexPath.row)
+        tableView.deleteRows(at: [indexPath], with: .automatic)
         performSegue(withIdentifier: SHTaksistWorkViewController.segueName, sender: self)
-        
-
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
     }
 }

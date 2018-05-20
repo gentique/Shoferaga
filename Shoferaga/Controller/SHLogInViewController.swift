@@ -8,8 +8,13 @@
 
 import UIKit
 import Firebase
+import SVProgressHUD
 
 class SHLogInViewController: UIViewController {
+    
+    
+    @IBOutlet weak var userName: UITextField!
+    @IBOutlet weak var passwordTextfield: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,26 +26,28 @@ class SHLogInViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+
     
-    @IBOutlet weak var userName: UITextField!
-    @IBOutlet weak var passwordTextfield: UITextField!
     @IBAction func logInButton(_ sender: Any) {
-        
+        SVProgressHUD.show(withStatus: "Logging in...")
         Auth.auth().signIn(withEmail: userName.text!, password: passwordTextfield.text!) { (user, error) in
             if error != nil{
-                print("there was an error")
-                print(error!)
+                SVProgressHUD.setStatus("Error")
+                print(error!.localizedDescription)
+                SVProgressHUD.dismiss(withDelay: 2)
+                
             }
             else{
-                print("log in sucessful!")
+                SVProgressHUD.setStatus("Success")
                 print(Auth.auth().currentUser!.uid)
                 self.getUserInfo()
                 // self.performSegue(withIdentifier: SHUdhetareViewController.segueName, sender: self)
             }
         }
     }
-    var someRandomINt : Int = 0
+
     func getUserInfo(){
+        SVProgressHUD.setStatus("Getting info..")
         let uid = Auth.auth().currentUser!.uid
         let ref = Database.database().reference()
         ref.child("Users/\(uid)").observeSingleEvent(of: .value) { (snapshot) in
@@ -50,7 +57,10 @@ class SHLogInViewController: UIViewController {
             if isWorker{
                 print("IS worker true")
                 print(isWorker)
-                self.performSegue(withIdentifier: SHTaksistListViewController.segueName, sender: self)
+                SVProgressHUD.setStatus("Success")
+                SVProgressHUD.dismiss(withDelay: 2, completion: {
+                    self.performSegue(withIdentifier: SHTaksistListViewController.segueName, sender: self)
+                })
             }else{
                 let email = snapshotValue["Email"]
                 let money = snapshotValue["Money"]
@@ -69,25 +79,15 @@ class SHLogInViewController: UIViewController {
                 user.phoneNumber = phoneNumber as! String
                 user.surname = surname as! String
                 
-                let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHUdhetareViewController.className) as! SHUdhetareViewController
-                udhetareVC.currentUser = user
-                self.navigationController?.pushViewController(udhetareVC, animated: true)
+                SVProgressHUD.setStatus("Success")
+                SVProgressHUD.dismiss(withDelay: 2, completion: {
+                    let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHUdhetareViewController.className) as! SHUdhetareViewController
+                    udhetareVC.currentUser = user
+                    self.navigationController?.pushViewController(udhetareVC, animated: true)
+                })
             }
         }
     }
-    
-    func updateSettings(){
-        
-    }
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
+
     
 }

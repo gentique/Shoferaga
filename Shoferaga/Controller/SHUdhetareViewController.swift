@@ -33,6 +33,7 @@ class SHUdhetareViewController: UIViewController {
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
         mapView.delegate = self
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         print(currentUser!.email)
         
@@ -63,7 +64,7 @@ class SHUdhetareViewController: UIViewController {
                 mapView.setCenter(coordinate, animated: false)
                 isCenteredOnce = true
             }
-
+            
             
             
         default:
@@ -81,22 +82,40 @@ class SHUdhetareViewController: UIViewController {
     
     
     @IBAction func requestButton(_ sender: Any) {
-        observeRequest()
-        indicatorView.startAnimating()
-        statusLabel.isHidden = false
+        switch requestButton.currentTitle! {
+        case "Hajde Shoferaga":
+            observeRequest()
+            indicatorView.startAnimating()
+            //TODO: kqrye qit tekst
+            statusLabel.isHidden = false
+            requestButton.isEnabled = false
+            
+            let userInfoDict: [String : Any] = ["Name" : currentUser!.name,
+                                                "Surname" : currentUser!.surname,
+                                                "Phone Number" : currentUser!.phoneNumber ,
+                                                "Email" : currentUser!.email ,
+                                                "Money" : currentUser!.money ,
+                                                "Worker" : false,
+                                                "lat" : currentUser!.lat ,
+                                                "lon" : currentUser!.lon,
+                                                "Accepted" : false]
+            
+            Database.database().reference().child("Request/\(FIRUserID)").setValue(userInfoDict)
+            requestButton.setTitle("Anulo", for: .normal)
+            return
+        case "Anulo":
+            requestButton.isEnabled = false
+            Database.database().reference().child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
+            Database.database().reference().child("Request/\(FIRUserID)").removeValue()
+            requestButton.setTitle("Hajde Shoferaga", for: .normal)
+            indicatorView.stopAnimating()
+            statusLabel.isHidden = true
+            requestButton.isEnabled = true
+            return
+        default:
+            return
+        }
         
-        
-        let userInfoDict: [String : Any] = ["Name" : currentUser!.name,
-                                            "Surname" : currentUser!.surname,
-                                            "Phone Number" : currentUser!.phoneNumber ,
-                                            "Email" : currentUser!.email ,
-                                            "Money" : currentUser!.money ,
-                                            "Worker" : false,
-                                            "lat" : currentUser!.lat ,
-                                            "lon" : currentUser!.lon,
-                                            "Accepted" : false]
-        
-        Database.database().reference().child("Request/\(FIRUserID)").setValue(userInfoDict)
     }
     
     func observeRequest(){
@@ -105,7 +124,8 @@ class SHUdhetareViewController: UIViewController {
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
             print(snapshot.value)
             print("FIRED UP!")
-            let isRequestAccepted = snapshotValue["Accepted"] as! Bool
+            self.requestButton.isEnabled = true
+            guard let isRequestAccepted = snapshotValue["Accepted"] as? Bool else{ return }
             if isRequestAccepted{
                 print(self.postRefHandle)
                 Database.database().reference().child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
@@ -127,6 +147,7 @@ class SHUdhetareViewController: UIViewController {
                 self.statusLabel.text = "Shoferi u gjet!"
                 self.indicatorView.stopAnimating()
                 self.updateMap(for: 0, lat: shoferLat, lon: shoferLon)
+                self.requestButton.isEnabled = false
                 
             }
         })
