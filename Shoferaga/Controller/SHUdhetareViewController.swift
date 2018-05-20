@@ -33,23 +33,9 @@ class SHUdhetareViewController: UIViewController {
         locationManager.startUpdatingLocation()
         mapView.delegate = self
         mapView.showsUserLocation = true
-        
-        
+
         print(currentUser!.email)
-        currentPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.82371997408492, longitude: 20.977706909179688))
-    }
-    func setFirstITEM(){
-        let geocoder = CLGeocoder()
-        let location2 = CLLocation(latitude: 42.82371997408492, longitude: 20.977706909179688)
-        
-        geocoder.reverseGeocodeLocation(location2) { (placemarks, error) in
-            if placemarks!.count > 0 {
-                if let placemark: MKPlacemark = placemarks![0] as? MKPlacemark{
-                    self.testTEST =  MKMapItem(placemark: placemark)
-                    print("Source set")
-                }
-            }
-        }
+
     }
     
     override func didReceiveMemoryWarning() {
