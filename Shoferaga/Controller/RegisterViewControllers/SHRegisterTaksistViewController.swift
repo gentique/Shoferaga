@@ -7,9 +7,21 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseAuth
 
 class SHRegisterTaksistViewController: UIViewController {
 
+    @IBOutlet weak var userNameTextField: UITextField!
+    
+    @IBOutlet weak var surnameTextField: UITextField!
+    
+    @IBOutlet weak var phoneNumberTextField: UITextField!
+    
+    
+    @IBOutlet weak var passwordTextfield: UITextField!
+    @IBOutlet weak var emailTextField: UITextField!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -20,8 +32,16 @@ class SHRegisterTaksistViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
 
+    @IBAction func registerButton(_ sender: Any) {
+        
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextfield.text!) { (user, errorHere) in
+            
+            let userInfo: [String : Any] = ["Name" : self.userNameTextField.text!, "Surname" : self.surnameTextField.text!, "Phone Number" : self.phoneNumberTextField.text! , "Email" : self.emailTextField.text! , "Money" : 50 , "Worker" : true, "lat" : 0 , "lon" : 0, "Approved" : false]
+            Database.database().reference().child("Users").child(user!.uid).setValue(userInfo)
+            print("SAVED ALL")
+        }
+    }
     /*
     // MARK: - Navigation
 

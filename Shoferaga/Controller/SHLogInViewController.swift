@@ -48,6 +48,8 @@ class SHLogInViewController: UIViewController {
             let isWorker = snapshotValue["Worker"] as! Bool
             
             if isWorker{
+                print("IS worker true")
+                print(isWorker)
                 self.performSegue(withIdentifier: SHTaksistListViewController.segueName, sender: self)
             }else{
                 let email = snapshotValue["Email"]

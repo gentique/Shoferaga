@@ -15,6 +15,8 @@
 		F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */; };
 		F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */; };
 		F811456220B0599E00F6AFCA /* SHTaksistWorkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811456120B0599E00F6AFCA /* SHTaksistWorkViewController.swift */; };
+		F811456420B063B300F6AFCA /* UdhetareSimpleList.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811456320B063B300F6AFCA /* UdhetareSimpleList.swift */; };
+		F811456720B0655A00F6AFCA /* UdhetareListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F811456620B0655A00F6AFCA /* UdhetareListCell.swift */; };
 		F8435AA920AF927300C51EBC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F8435AA820AF927300C51EBC /* GoogleService-Info.plist */; };
 		F89013D020B035450018BE3F /* Udhetare.swift in Sources */ = {isa = PBXBuildFile; fileRef = F89013CF20B035450018BE3F /* Udhetare.swift */; };
 		F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F897360420ACD1E800DFD4B2 /* AppDelegate.swift */; };
@@ -28,6 +30,7 @@
 		F8E771E920AE0FA50037D247 /* SHUdhetareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */; };
 		F8E771EB20AE10460037D247 /* SHTaksistListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EA20AE10460037D247 /* SHTaksistListViewController.swift */; };
 		F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E771EC20AE185B0037D247 /* SHAnnotation.swift */; };
+		F8E8684E20B1D1AF007C9182 /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8E8684D20B1D1AF007C9182 /* Dictionary+Merge.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +56,8 @@
 		F80A004120ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterUdhetareViewController.swift; sourceTree = "<group>"; };
 		F80A004320ACF0FA00231F2B /* SHRegisterTaksistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHRegisterTaksistViewController.swift; sourceTree = "<group>"; };
 		F811456120B0599E00F6AFCA /* SHTaksistWorkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistWorkViewController.swift; sourceTree = "<group>"; };
+		F811456320B063B300F6AFCA /* UdhetareSimpleList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdhetareSimpleList.swift; sourceTree = "<group>"; };
+		F811456620B0655A00F6AFCA /* UdhetareListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdhetareListCell.swift; sourceTree = "<group>"; };
 		F8435AA820AF927300C51EBC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		F89013CF20B035450018BE3F /* Udhetare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Udhetare.swift; sourceTree = "<group>"; };
 		F897360120ACD1E700DFD4B2 /* Shoferaga.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Shoferaga.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +75,7 @@
 		F8E771E820AE0FA50037D247 /* SHUdhetareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHUdhetareViewController.swift; sourceTree = "<group>"; };
 		F8E771EA20AE10460037D247 /* SHTaksistListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHTaksistListViewController.swift; sourceTree = "<group>"; };
 		F8E771EC20AE185B0037D247 /* SHAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SHAnnotation.swift; sourceTree = "<group>"; };
+		F8E8684D20B1D1AF007C9182 /* Dictionary+Merge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +123,7 @@
 			children = (
 				F8E771EC20AE185B0037D247 /* SHAnnotation.swift */,
 				F89013CF20B035450018BE3F /* Udhetare.swift */,
+				F811456320B063B300F6AFCA /* UdhetareSimpleList.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -126,6 +133,7 @@
 			children = (
 				F80A003A20ACD81000231F2B /* MainLogInButtonsView.swift */,
 				F80A003F20ACED4300231F2B /* AvatarImageView.swift */,
+				F811456620B0655A00F6AFCA /* UdhetareListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				F8D30ABC20ADF97E007C6B6D /* NSObject+ClassSegueName.swift */,
+				F8E8684D20B1D1AF007C9182 /* Dictionary+Merge.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -385,12 +394,15 @@
 				F8E771ED20AE185B0037D247 /* SHAnnotation.swift in Sources */,
 				F80A004420ACF0FA00231F2B /* SHRegisterTaksistViewController.swift in Sources */,
 				F897360520ACD1E800DFD4B2 /* AppDelegate.swift in Sources */,
+				F811456420B063B300F6AFCA /* UdhetareSimpleList.swift in Sources */,
+				F8E8684E20B1D1AF007C9182 /* Dictionary+Merge.swift in Sources */,
 				F8E771EB20AE10460037D247 /* SHTaksistListViewController.swift in Sources */,
 				F80A003E20ACE91200231F2B /* SHWhatTypeOfUserViewController.swift in Sources */,
 				F80A004220ACF0DB00231F2B /* SHRegisterUdhetareViewController.swift in Sources */,
 				F8D30ABD20ADF97E007C6B6D /* NSObject+ClassSegueName.swift in Sources */,
 				F8E771E720AE0F320037D247 /* SHLogInViewController.swift in Sources */,
 				F8E771E920AE0FA50037D247 /* SHUdhetareViewController.swift in Sources */,
+				F811456720B0655A00F6AFCA /* UdhetareListCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
