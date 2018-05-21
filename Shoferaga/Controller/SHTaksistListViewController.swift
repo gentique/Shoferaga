@@ -10,16 +10,18 @@ import UIKit
 import Firebase
 import FirebaseAuth
 import CoreLocation
+import SVProgressHUD
 
 class SHTaksistListViewController: UIViewController {
     
-    
-    
-    var list: [UdhetareSimpleList] = [UdhetareSimpleList]()
-    @IBOutlet weak var tableView: UITableView!
-    let locationManager = CLLocationManager()
     var currentLocation: CLLocationCoordinate2D?
-
+    var FIRKey = ""
+    var list: [UdhetareSimpleList] = [UdhetareSimpleList]()
+    
+    @IBOutlet weak var tableView: UITableView!
+    
+    let locationManager = CLLocationManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,16 +29,18 @@ class SHTaksistListViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         
         loadRequests()
-        
-        
+
         // Do any additional setup after loading the view.
     }
-    
+    override func viewDidAppear(_ animated: Bool) {
+        //we dont want to keep anything in memory when we come back
+
+    }
     
     
     override func didReceiveMemoryWarning() {
@@ -47,26 +51,27 @@ class SHTaksistListViewController: UIViewController {
         Database.database().reference().child("Request").observe(.childAdded) { (snapshot) in
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
             
+            let isAccepted = snapshotValue["Accepted"] as! Bool
+            if !isAccepted{
+                let name = snapshotValue["Name"]
+                let lat = snapshotValue["lat"]
+                let lon = snapshotValue["lon"]
+                
+                let userInfo = UdhetareSimpleList()
+                print("ARE WE HERE")
+                userInfo.Name = name as! String
+                userInfo.lat = lat as! Double
+                userInfo.lon = lon as! Double
+                userInfo.FIRKey = snapshot.key
+                
+                self.list.append(userInfo)
+                self.tableView.reloadData()
+            }
             print(snapshotValue)
-            let name = snapshotValue["Name"]
-            let lat = snapshotValue["lat"]
-            let lon = snapshotValue["lon"]
-            
-            let userInfo = UdhetareSimpleList()
-            print("ARE WE HERE")
-            userInfo.Name = name as! String
-            userInfo.lat = lat as! Double
-            userInfo.lon = lon as! Double
-            userInfo.FIRKey = snapshot.key
-            
-            self.list.append(userInfo)
-            
-            self.tableView.reloadData()
-            
         }
     }
     
-    var FIRKey = ""
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SHTaksistWorkViewController.segueName{
             if let taksistWorkVC = segue.destination as? SHTaksistWorkViewController{
@@ -87,7 +92,7 @@ class SHTaksistListViewController: UIViewController {
         let φ2 = toRadians(lat2)
         let Δφ = toRadians(lat2-gLat1)
         let Δλ = toRadians(lon2-gLon1)
-
+        
         let a = sin(Δφ/2) * sin(Δφ/2) + cos(φ1) * cos(φ2) * sin(Δλ/2) * sin(Δλ/2)
         let c = 2 * atan2(sqrt(a), sqrt(1-a))
         

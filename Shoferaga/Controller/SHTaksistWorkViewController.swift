@@ -13,16 +13,22 @@ import MapKit
 
 class SHTaksistWorkViewController: UIViewController {
 
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var navigationButton: UIButton!
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var idLabel: UILabel!
+    
     var refID: String?
     var currentLocation: CLLocationCoordinate2D?
     var currentPlacemark: MKPlacemark?
-    let locationManager = CLLocationManager()
-    var postRefHandle: DatabaseHandle!
-    var udhetare = Udhetare()
-    @IBOutlet weak var idLabel: UILabel!
     
+    var udhetare = Udhetare()
+    let ref = Database.database().reference()
+    var postRefHandle: DatabaseHandle!
+    let locationManager = CLLocationManager()
+    
+    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         idLabel.text = refID!
@@ -35,15 +41,11 @@ class SHTaksistWorkViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         
-        Database.database().reference().child("Request/\(refID!)").updateChildValues(["Accepted" : true])
+        ref.child("Request/\(refID!)").updateChildValues(["Accepted" : true])
         getRequestInfo()
         //TODO: On viewDidLoad navbar should be hidden, after the work order is done navbar should appear again so that the user can select another job from the queue
         
-        //navigationItem.hidesBackButton = true
-        
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
+        self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
     override func didReceiveMemoryWarning() {
@@ -52,7 +54,7 @@ class SHTaksistWorkViewController: UIViewController {
     }
         //MARK:- Firebase
     func getRequestInfo(){
-        Database.database().reference().child("Request/\(refID!)").observeSingleEvent(of: .value) { (snapshot) in
+        ref.child("Request/\(refID!)").observeSingleEvent(of: .value) { (snapshot) in
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
             
             let lat = snapshotValue["lat"] as! Double
@@ -75,25 +77,66 @@ class SHTaksistWorkViewController: UIViewController {
             dict.append(with: snapshotValue)
             
             //copy the current data to InProgress
-            Database.database().reference().child("InProgress/\(self.refID!)").setValue(dict)
+            self.ref.child("InProgress/\(self.refID!)").setValue(dict)
             self.observeInProgress()
             self.deleteRequestRef()
         }
     }
 
     func deleteRequestRef(){
-        Database.database().reference().child("Request/\(self.refID!)").removeValue()
+        ref.child("Request/\(self.refID!)").removeValue()
     }
     
     //TODO: need to set completion status from both sides, then set job as finished
     func observeInProgress(){
-        postRefHandle = Database.database().reference().child("InProgress/\(refID!)").observe(.value, with: { (snapshot) in
+        finishButton.isEnabled = true
+        postRefHandle = ref.child("InProgress/\(refID!)").observe(.value, with: { (snapshot) in
+            let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
+            
+            if (snapshotValue["Udhetar-Finish"] as? Bool) != nil {
+                //if successful, this per se means that it's true
+                    //we need to check if we are the only one observing, so that we can move the job to "Completed"
+                    self.askToFinish(withData: snapshotValue)
+                self.ref.child("InProgress/\(self.refID!)").removeValue()
+                    self.ref.child("InProgress/\(self.refID!)").removeObserver(withHandle: self.postRefHandle)
+        
+            }
             print(snapshot.value)
+            
         }) 
     }
     
-    func updateMap(with coor: CLLocationCoordinate2D, and name: String){
-        let currentLocationAnnotation = SHAnnotation(title: "Udhetari yt", locationName: name, coordinate: coor)
+    @IBAction func finishButtonPressed(_ sender: Any) {
+        ref.child("InProgress/\(refID!)").updateChildValues(["Shofer-Finish": true])
+        ref.child("InProgress/\(refID!)").removeObserver(withHandle: postRefHandle)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
+        
+        self.disableAndHideButtons(true)
+    }
+    
+    func askToFinish(withData snapshotDict: [String : AnyObject]){
+        ref.child("Completed").childByAutoId().setValue(snapshotDict)
+        
+        let actionSheet = UIAlertController(title: "Udhetari e ka deklaru qe puna u kry", message: "", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Sbon mja prish", style: .default, handler: { (action: UIAlertAction ) in
+            self.navigationController?.setNavigationBarHidden(false, animated: true)
+            
+            self.disableAndHideButtons(true)
+            
+        }))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func disableAndHideButtons(_ state: Bool){
+        self.finishButton.isEnabled = !state
+        self.finishButton.isHidden = state
+        self.navigationButton.isEnabled = !state
+        self.navigationButton.isHidden = state
+    }
+    
+    // Update the map after you get the clients location
+    func updateMap(with coor: CLLocationCoordinate2D, and userInfo: String){
+        let currentLocationAnnotation = SHAnnotation(title: "Udhetari yt", locationName: userInfo, coordinate: coor)
         mapView.setCenter(coor, animated: true)
         mapView.addAnnotation(currentLocationAnnotation)
     }
@@ -101,8 +144,8 @@ class SHTaksistWorkViewController: UIViewController {
     @IBAction func showRouteButton(_ sender: Any) {
         showRoute()
     }
+    
     func showRoute(){
-
         print("INSIDE BUTTON SHOW ROUTER?")
         guard let currentPlacemark = currentPlacemark else {
             return

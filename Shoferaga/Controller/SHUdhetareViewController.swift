@@ -16,15 +16,20 @@ class SHUdhetareViewController: UIViewController {
     
     var currentUser: Udhetare?
     
+    @IBOutlet weak var finishButton: UIButton!
     @IBOutlet weak var requestButton: UIButton!
-    let locationManager = CLLocationManager()
-    var currentLocation: CLLocationCoordinate2D?
-    let FIRUserID = Auth.auth().currentUser!.uid
-    var postRefHandle: DatabaseHandle!
-    var isCenteredOnce = false
-    
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
+    
+    let locationManager = CLLocationManager()
+    let FIRUserID = Auth.auth().currentUser!.uid
+    let ref = Database.database().reference()
+    
+    var postRefHandle: DatabaseHandle!
+    var isCenteredOnce = false
+    var currentPlacemark: CLPlacemark?
+    var currentLocation: CLLocationCoordinate2D?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -32,7 +37,9 @@ class SHUdhetareViewController: UIViewController {
         locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
+        
         mapView.delegate = self
+        
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         print(currentUser!.email)
@@ -54,7 +61,6 @@ class SHUdhetareViewController: UIViewController {
         case 0:
             let testAnno = SHAnnotation(title: "Shoferaga", locationName: "Knej o", coordinate: coordinate)
             mapView.setCenter(coordinate, animated: true)
-            //qit funksion duhet me e limitu se po rrin tu kriju shum annotations
             mapView.removeAnnotation(testAnno)
             mapView.addAnnotation(testAnno)
         case 1:
@@ -64,9 +70,6 @@ class SHUdhetareViewController: UIViewController {
                 mapView.setCenter(coordinate, animated: false)
                 isCenteredOnce = true
             }
-            
-            
-            
         default:
             return
         }
@@ -74,12 +77,10 @@ class SHUdhetareViewController: UIViewController {
     }
     //MARK:- Firebase
     func sendLocationToFIR(){
-        let ref = Database.database().reference().child("Users/\(FIRUserID)")
         currentUser!.lat = currentLocation!.latitude
         currentUser!.lon = currentLocation!.longitude
-        ref.updateChildValues(["lon" : currentLocation!.longitude , "lat" : currentLocation!.latitude])
+        ref.child("Users/\(FIRUserID)").updateChildValues(["lon" : currentLocation!.longitude , "lat" : currentLocation!.latitude])
     }
-    
     
     @IBAction func requestButton(_ sender: Any) {
         switch requestButton.currentTitle! {
@@ -100,13 +101,13 @@ class SHUdhetareViewController: UIViewController {
                                                 "lon" : currentUser!.lon,
                                                 "Accepted" : false]
             
-            Database.database().reference().child("Request/\(FIRUserID)").setValue(userInfoDict)
+            ref.child("Request/\(FIRUserID)").setValue(userInfoDict)
             requestButton.setTitle("Anulo", for: .normal)
             return
         case "Anulo":
             requestButton.isEnabled = false
-            Database.database().reference().child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
-            Database.database().reference().child("Request/\(FIRUserID)").removeValue()
+            ref.child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
+            ref.child("Request/\(FIRUserID)").removeValue()
             requestButton.setTitle("Hajde Shoferaga", for: .normal)
             indicatorView.stopAnimating()
             statusLabel.isHidden = true
@@ -115,11 +116,10 @@ class SHUdhetareViewController: UIViewController {
         default:
             return
         }
-        
     }
     
     func observeRequest(){
-        postRefHandle = Database.database().reference().child("Request/\(FIRUserID)").observe(.value) { (snapshot) in
+        postRefHandle = ref.child("Request/\(FIRUserID)").observe(.value) { (snapshot) in
             
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
             print(snapshot.value)
@@ -128,32 +128,59 @@ class SHUdhetareViewController: UIViewController {
             guard let isRequestAccepted = snapshotValue["Accepted"] as? Bool else{ return }
             if isRequestAccepted{
                 print(self.postRefHandle)
-                Database.database().reference().child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
+                self.ref.child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
                 self.statusLabel.text = "Tu e kqyr ku o.. "
                 self.observeInProgress()
                 self.requestButton.isEnabled = false
-                
             }
         }
     }
     
     func observeInProgress(){
-        postRefHandle = Database.database().reference().child("InProgress/\(FIRUserID)").observe(.value, with: { (snapshot) in
+        postRefHandle = ref.child("InProgress/\(FIRUserID)").observe(.value, with: { (snapshot) in
             let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
             print(snapshot.value)
-            if (snapshotValue["Shofer-lat"] as? Double) != nil{
+            // updates map with shofer location
+            if (snapshotValue["Shofer-Finish"] as? Bool) != nil {
+                self.askToFinish(withData: snapshotValue)
+                self.ref.child("InProgress/\(self.FIRUserID)").removeValue()
+                self.ref.child("InProgress/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
+            } else if (snapshotValue["Shofer-lat"] as? Double) != nil{
                 let shoferLat = snapshotValue["Shofer-lat"] as! Double
                 let shoferLon = snapshotValue["Shofer-lon"] as! Double
+                
                 self.statusLabel.text = "Shoferi u gjet!"
                 self.indicatorView.stopAnimating()
                 self.updateMap(for: 0, lat: shoferLat, lon: shoferLon)
-                self.requestButton.isEnabled = false
                 
+                self.requestButton.isEnabled = false
+                self.finishButton.isHidden = false
+                self.finishButton.isEnabled = true
             }
         })
-        
     }
-    var currentPlacemark: CLPlacemark?
+    
+    @IBAction func finishButtonPressed(_ sender: Any) {
+        ref.child("InProgress/\(FIRUserID)").removeObserver(withHandle: postRefHandle)
+        ref.child("InProgress/\(FIRUserID)").updateChildValues(["Udhetar-Finish": true])
+        statusLabel.text = "Puna u kry"
+        hideAndDisableFinishButton(true)
+    }
+    
+    func askToFinish(withData snapshotDict: [String : AnyObject]){
+        ref.child("Completed").childByAutoId().setValue(snapshotDict)
+        let actionSheet = UIAlertController(title: "Shoferi e ka deklaru qe puna u kry", message: "", preferredStyle: .actionSheet)
+        
+        actionSheet.addAction(UIAlertAction(title: "Sbon mja prish", style: .default, handler: { (action: UIAlertAction ) in
+            self.hideAndDisableFinishButton(true)
+            self.statusLabel.text = "Puna u kry"
+        }))
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    func hideAndDisableFinishButton(_ state: Bool){
+        finishButton.isHidden = true
+        finishButton.isEnabled = false
+    }
     @IBAction func displayRoute(_ sender: Any) {
         showRoute()
     }
@@ -186,6 +213,7 @@ class SHUdhetareViewController: UIViewController {
             
             let routeRect = route.polyline.boundingMapRect
             self.mapView.setRegion(MKCoordinateRegionForMapRect(routeRect), animated: true)
+            
         }
     }
 }

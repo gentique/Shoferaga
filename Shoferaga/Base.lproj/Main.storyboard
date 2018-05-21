@@ -250,8 +250,16 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="EN6-Uh-4RG">
                                 <rect key="frame" x="0.0" y="120" width="375" height="467"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FaM-75-hvg">
+                                <rect key="frame" x="186" y="585" width="57" height="76"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                                <state key="normal" title="✅"/>
+                                <connections>
+                                    <action selector="finishButtonPressed:" destination="9Ie-tB-lyp" eventType="touchUpInside" id="ryQ-sh-HGS"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="62d-Vb-hOW">
-                                <rect key="frame" x="157" y="595" width="60" height="58"/>
+                                <rect key="frame" x="118" y="594" width="60" height="58"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="53"/>
                                 <state key="normal" title="↗️"/>
                                 <connections>
@@ -264,18 +272,21 @@
                             <constraint firstItem="rtn-dh-iHX" firstAttribute="trailing" secondItem="zkX-nf-Dtq" secondAttribute="trailing" id="31D-GV-3OR"/>
                             <constraint firstItem="zkX-nf-Dtq" firstAttribute="leading" secondItem="rtn-dh-iHX" secondAttribute="leading" id="3uu-ar-fzN"/>
                             <constraint firstItem="rtn-dh-iHX" firstAttribute="bottom" secondItem="EN6-Uh-4RG" secondAttribute="bottom" constant="80" id="56s-TM-bQh"/>
-                            <constraint firstItem="rtn-dh-iHX" firstAttribute="bottom" secondItem="62d-Vb-hOW" secondAttribute="bottom" constant="14" id="630-Qd-ZLd"/>
+                            <constraint firstItem="rtn-dh-iHX" firstAttribute="bottom" secondItem="62d-Vb-hOW" secondAttribute="bottom" constant="15" id="630-Qd-ZLd"/>
                             <constraint firstItem="EN6-Uh-4RG" firstAttribute="trailing" secondItem="rtn-dh-iHX" secondAttribute="trailing" id="B9g-MX-Wal"/>
-                            <constraint firstItem="62d-Vb-hOW" firstAttribute="centerX" secondItem="EN6-Uh-4RG" secondAttribute="centerX" id="CWx-Am-du0"/>
+                            <constraint firstItem="62d-Vb-hOW" firstAttribute="centerX" secondItem="EN6-Uh-4RG" secondAttribute="centerX" constant="-39.5" id="CWx-Am-du0"/>
+                            <constraint firstItem="FaM-75-hvg" firstAttribute="centerY" secondItem="62d-Vb-hOW" secondAttribute="centerY" id="Llv-By-X5Z"/>
                             <constraint firstItem="EN6-Uh-4RG" firstAttribute="leading" secondItem="rtn-dh-iHX" secondAttribute="leading" id="Q0k-O0-Yia"/>
+                            <constraint firstItem="FaM-75-hvg" firstAttribute="leading" secondItem="62d-Vb-hOW" secondAttribute="trailing" constant="8" symbolic="YES" id="cmh-W6-iUR"/>
                             <constraint firstItem="EN6-Uh-4RG" firstAttribute="top" secondItem="zkX-nf-Dtq" secondAttribute="bottom" constant="5" id="gxc-9D-xDW"/>
-                            <constraint firstItem="62d-Vb-hOW" firstAttribute="leading" secondItem="rtn-dh-iHX" secondAttribute="leading" constant="157" id="pG4-jk-sCH"/>
-                            <constraint firstItem="62d-Vb-hOW" firstAttribute="top" secondItem="EN6-Uh-4RG" secondAttribute="bottom" constant="8" symbolic="YES" id="tg3-DD-a7k"/>
+                            <constraint firstItem="62d-Vb-hOW" firstAttribute="leading" secondItem="rtn-dh-iHX" secondAttribute="leading" constant="118" id="pG4-jk-sCH"/>
+                            <constraint firstItem="62d-Vb-hOW" firstAttribute="top" secondItem="EN6-Uh-4RG" secondAttribute="bottom" constant="7" id="tg3-DD-a7k"/>
                             <constraint firstItem="zkX-nf-Dtq" firstAttribute="top" secondItem="rtn-dh-iHX" secondAttribute="top" constant="30" id="zVn-fp-rop"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="rtn-dh-iHX"/>
                     </view>
                     <connections>
+                        <outlet property="finishButton" destination="FaM-75-hvg" id="Fmc-ae-cj1"/>
                         <outlet property="idLabel" destination="zkX-nf-Dtq" id="DXv-UG-6Jq"/>
                         <outlet property="mapView" destination="EN6-Uh-4RG" id="rp2-pE-djr"/>
                         <outlet property="navigationButton" destination="62d-Vb-hOW" id="HCP-M8-m8e"/>
@@ -315,14 +326,25 @@
                                     <action selector="requestButton:" destination="4lL-ZS-bLe" eventType="touchUpInside" id="hXR-Bb-9x7"/>
                                 </connections>
                             </button>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tdT-bE-GfE">
+                                <rect key="frame" x="159" y="571" width="57" height="76"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="53"/>
+                                <state key="normal" title="✅"/>
+                                <connections>
+                                    <action selector="finishButtonPressed:" destination="4lL-ZS-bLe" eventType="touchUpInside" id="RSy-qC-YYv"/>
+                                    <action selector="finishButtonPressed:" destination="9Ie-tB-lyp" eventType="touchUpInside" id="eHg-nw-td4"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="E9z-QR-xGk" firstAttribute="top" secondItem="1sH-Td-0DW" secondAttribute="top" id="0c7-wP-Vdd"/>
                             <constraint firstItem="N9w-QK-nu4" firstAttribute="bottom" secondItem="mwe-JX-KZz" secondAttribute="bottom" constant="266" id="0cb-Nz-pxA"/>
                             <constraint firstItem="mwe-JX-KZz" firstAttribute="leading" secondItem="dgr-bs-vhf" secondAttribute="trailing" constant="8" id="6Ih-4w-reZ"/>
+                            <constraint firstItem="tdT-bE-GfE" firstAttribute="centerX" secondItem="5tr-CB-RF6" secondAttribute="centerX" id="9jD-b3-Ahl"/>
                             <constraint firstItem="E9z-QR-xGk" firstAttribute="trailing" secondItem="N9w-QK-nu4" secondAttribute="trailing" id="A5a-nB-Pe8"/>
                             <constraint firstItem="E9z-QR-xGk" firstAttribute="leading" secondItem="N9w-QK-nu4" secondAttribute="leading" id="Ch5-DZ-9zN"/>
+                            <constraint firstAttribute="bottom" secondItem="tdT-bE-GfE" secondAttribute="bottom" constant="20" symbolic="YES" id="Gn9-Cq-dKo"/>
                             <constraint firstItem="mwe-JX-KZz" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="56" id="LxC-g2-wAp"/>
                             <constraint firstItem="dgr-bs-vhf" firstAttribute="top" secondItem="E9z-QR-xGk" secondAttribute="bottom" constant="55" id="PD7-ga-TAh"/>
                             <constraint firstItem="5tr-CB-RF6" firstAttribute="centerX" secondItem="dgr-bs-vhf" secondAttribute="centerX" id="lsP-X4-gqb"/>
@@ -332,6 +354,7 @@
                         <viewLayoutGuide key="safeArea" id="N9w-QK-nu4"/>
                     </view>
                     <connections>
+                        <outlet property="finishButton" destination="tdT-bE-GfE" id="0uJ-Te-3FB"/>
                         <outlet property="indicatorView" destination="mwe-JX-KZz" id="M3G-Ro-uYV"/>
                         <outlet property="mapView" destination="E9z-QR-xGk" id="l5V-1S-9XF"/>
                         <outlet property="requestButton" destination="5tr-CB-RF6" id="g0C-xC-q8u"/>
