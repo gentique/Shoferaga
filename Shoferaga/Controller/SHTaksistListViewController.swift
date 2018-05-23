@@ -47,27 +47,35 @@ class SHTaksistListViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
     func loadRequests(){
-        Database.database().reference().child("Request").observe(.childAdded) { (snapshot) in
-            let snapshotValue = snapshot.value as? [String : AnyObject] ?? [:]
-            
-            let isAccepted = snapshotValue["Accepted"] as! Bool
-            if !isAccepted{
-                let name = snapshotValue["Name"]
-                let lat = snapshotValue["lat"]
-                let lon = snapshotValue["lon"]
-                
-                let userInfo = UdhetareSimpleList()
-                print("ARE WE HERE")
-                userInfo.Name = name as! String
-                userInfo.lat = lat as! Double
-                userInfo.lon = lon as! Double
-                userInfo.FIRKey = snapshot.key
-                
-                self.list.append(userInfo)
+        Database.database().reference().child("Request").observe(.value) { (snapshot) in
+            self.list.removeAll()
+
+            if !snapshot.exists(){
                 self.tableView.reloadData()
             }
-            print(snapshotValue)
+            for users in snapshot.children.allObjects as! [DataSnapshot]{
+                let userValue = users.value as? [String : AnyObject] ?? [:]
+                
+                let isAccepted = userValue["Accepted"] as! Bool
+                if !isAccepted{
+                    let name = userValue["Name"]
+                    let lat = userValue["lat"]
+                    let lon = userValue["lon"]
+                    
+                    let userInfo = UdhetareSimpleList()
+                    print("ARE WE HERE")
+                    userInfo.Name = name as! String
+                    userInfo.lat = lat as! Double
+                    userInfo.lon = lon as! Double
+                    userInfo.FIRKey = snapshot.key
+                    
+                    self.list.append(userInfo)
+                    self.tableView.reloadData()
+                }
+                
+            }
         }
     }
     
