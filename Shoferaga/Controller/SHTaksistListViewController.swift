@@ -34,12 +34,12 @@ class SHTaksistListViewController: UIViewController {
         tableView.dataSource = self
         
         loadRequests()
-
+        
         // Do any additional setup after loading the view.
     }
     override func viewDidAppear(_ animated: Bool) {
         //we dont want to keep anything in memory when we come back
-
+        
     }
     
     
@@ -51,12 +51,12 @@ class SHTaksistListViewController: UIViewController {
     func loadRequests(){
         Database.database().reference().child("Request").observe(.value) { (snapshot) in
             self.list.removeAll()
-
+            
             if !snapshot.exists(){
                 self.tableView.reloadData()
                 return
             }
-
+            
             for users in snapshot.children.allObjects as! [DataSnapshot]{
                 let userValue = users.value as? [String : AnyObject] ?? [:]
                 
