@@ -21,10 +21,9 @@ class SHTaksistWorkViewController: UIViewController {
     var refID: String?
     var currentLocation: CLLocationCoordinate2D?
     var currentPlacemark: MKPlacemark?
-    
-    var udhetare = Udhetare()
-    let ref = Database.database().reference()
     var postRefHandle: DatabaseHandle!
+    
+    let ref = Database.database().reference()
     let locationManager = CLLocationManager()
     
     
@@ -61,15 +60,12 @@ class SHTaksistWorkViewController: UIViewController {
             let lon = snapshotValue["lon"] as! Double
             let name = snapshotValue["Name"] as! String
             let surname = snapshotValue["Surname"] as! String
-            
-            self.udhetare.name = name
-            self.udhetare.surname = surname
-            //tolazy
+
             
             let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: lon)
             self.currentPlacemark = MKPlacemark(coordinate: coordinates)
             
-            self.updateMap(with: coordinates, and: "\(self.udhetare.name) \(self.udhetare.surname)")
+            self.updateMap(with: coordinates, and: "\(name) \(surname)")
             print(coordinates)
             print(snapshotValue)
             
@@ -95,18 +91,20 @@ class SHTaksistWorkViewController: UIViewController {
             
             if (snapshotValue["Udhetar-Finish"] as? Bool) != nil {
                 //if successful, this per se means that it's true
-                    //we need to check if we are the only one observing, so that we can move the job to "Completed"
-                    self.askToFinish(withData: snapshotValue)
+                //we need to check if we are the only one observing, so that we can move the job to "Completed"
+                self.askToFinish(withData: snapshotValue)
                 self.ref.child("InProgress/\(self.refID!)").removeValue()
-                    self.ref.child("InProgress/\(self.refID!)").removeObserver(withHandle: self.postRefHandle)
-        
+                self.ref.child("InProgress/\(self.refID!)").removeObserver(withHandle: self.postRefHandle)
             }
             print(snapshot.value)
-            
         }) 
     }
     
     @IBAction func finishButtonPressed(_ sender: Any) {
+        setJobAsFinished()
+    }
+    
+    func setJobAsFinished(){
         ref.child("InProgress/\(refID!)").updateChildValues(["Shofer-Finish": true])
         ref.child("InProgress/\(refID!)").removeObserver(withHandle: postRefHandle)
         self.navigationController?.setNavigationBarHidden(false, animated: true)

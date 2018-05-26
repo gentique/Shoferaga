@@ -54,28 +54,25 @@ class SHTaksistListViewController: UIViewController {
 
             if !snapshot.exists(){
                 self.tableView.reloadData()
+                return
             }
+
             for users in snapshot.children.allObjects as! [DataSnapshot]{
                 let userValue = users.value as? [String : AnyObject] ?? [:]
                 
                 let isAccepted = userValue["Accepted"] as! Bool
                 if !isAccepted{
-                    let name = userValue["Name"]
-                    let lat = userValue["lat"]
-                    let lon = userValue["lon"]
+                    let name = userValue["Name"] as! String
+                    let lat = userValue["lat"] as! Double
+                    let lon = userValue["lon"] as! Double
                     
-                    let userInfo = UdhetareSimpleList()
+                    let userInfo = UdhetareSimpleList(name: name, firKey: users.key, lat: lat, lon: lon)
                     print("ARE WE HERE")
-                    userInfo.Name = name as! String
-                    userInfo.lat = lat as! Double
-                    userInfo.lon = lon as! Double
-                    userInfo.FIRKey = snapshot.key
                     
                     self.list.append(userInfo)
-                    self.tableView.reloadData()
                 }
-                
             }
+            self.tableView.reloadData()
         }
     }
     
@@ -138,19 +135,20 @@ extension SHTaksistListViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? UdhetareListCell{
-            let distance = calculateDistance(currentLocation?.latitude, lat2: list[indexPath.row].lat, lon1: currentLocation?.longitude, lon2: list[indexPath.row].lon)
-            cell.updateLabel(with: list[indexPath.row].Name + " Distance: \(distance) " )
-            return cell
-        }
-        return UdhetareListCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! UdhetareListCell
+        let distance = calculateDistance(currentLocation?.latitude, lat2: list[indexPath.row].lat, lon1: currentLocation?.longitude, lon2: list[indexPath.row].lon)
+        cell.updateLabel(with: list[indexPath.row].Name + " Distance: \(distance) " )
+        return cell
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         FIRKey = list[indexPath.row].FIRKey
+        print(FIRKey)
         list.remove(at: indexPath.row)
         tableView.deleteRows(at: [indexPath], with: .automatic)
         performSegue(withIdentifier: SHTaksistWorkViewController.segueName, sender: self)
     }
+    
     func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }

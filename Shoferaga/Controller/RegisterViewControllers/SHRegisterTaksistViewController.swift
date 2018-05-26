@@ -34,6 +34,9 @@ class SHRegisterTaksistViewController: UIViewController {
     }
 
     @IBAction func registerButton(_ sender: Any) {
+
+    }
+    func registerDriverWithFirebase(){
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextfield.text!) { (user, errorHere) in
             
@@ -50,6 +53,7 @@ class SHRegisterTaksistViewController: UIViewController {
             print("SAVED ALL")
         }
     }
+    
     /*
     // MARK: - Navigation
 

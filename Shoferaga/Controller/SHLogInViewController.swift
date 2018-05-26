@@ -29,6 +29,10 @@ class SHLogInViewController: UIViewController {
 
     
     @IBAction func logInButton(_ sender: Any) {
+        logInWithFirebase()
+    }
+    
+    func logInWithFirebase(){
         SVProgressHUD.show(withStatus: "Logging in...")
         Auth.auth().signIn(withEmail: userName.text!, password: passwordTextfield.text!) { (user, error) in
             if error != nil{
@@ -62,22 +66,15 @@ class SHLogInViewController: UIViewController {
                     self.performSegue(withIdentifier: SHTaksistListViewController.segueName, sender: self)
                 })
             }else{
-                let email = snapshotValue["Email"]
-                let money = snapshotValue["Money"]
-                let name = snapshotValue["Name"]
-                let surname = snapshotValue["Surname"]
-                let phoneNumber = snapshotValue["Phone Number"]
-                let lat = snapshotValue["lat"]
-                let lon = snapshotValue["lon"]
+                let email = snapshotValue["Email"] as! String
+                let money = snapshotValue["Money"] as! Double
+                let name = snapshotValue["Name"]  as! String
+                let surname = snapshotValue["Surname"]  as! String
+                let phoneNumber = snapshotValue["Phone Number"]  as! String
+                let lat = snapshotValue["lat"] as! Double
+                let lon = snapshotValue["lon"] as! Double
                 
-                let user = Udhetare()
-                user.email = email as! String
-                user.lat = lat as! Double
-                user.lon = lon as! Double
-                user.money = money as! Double
-                user.name = name as! String
-                user.phoneNumber = phoneNumber as! String
-                user.surname = surname as! String
+                let user = Udhetare(name: name, surname: surname, email: email, phoneNumber: phoneNumber, money: money, worker: false, lat: lat, lon: lon)  
                 
                 SVProgressHUD.setStatus("Success")
                 SVProgressHUD.dismiss(withDelay: 2, completion: {

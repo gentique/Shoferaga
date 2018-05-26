@@ -9,8 +9,14 @@
 import Foundation
 
 class UdhetareSimpleList{
-    var Name = String()
-    var FIRKey = String()
-    var lat = Double()
-    var lon = Double()
+    private(set) public var Name = String()
+    private(set) public var FIRKey = String()
+    private(set) public var lat = Double()
+    private(set) public var lon = Double()
+    init(name :String, firKey: String, lat: Double, lon: Double) {
+        self.Name = name
+        self.FIRKey = firKey
+        self.lat = lat
+        self.lon = lon
+    }
 }

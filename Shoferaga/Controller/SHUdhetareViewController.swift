@@ -20,7 +20,8 @@ class SHUdhetareViewController: UIViewController {
     @IBOutlet weak var requestButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var indicatorView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var mapView: MKMapView!
+
     let locationManager = CLLocationManager()
     let FIRUserID = Auth.auth().currentUser!.uid
     let ref = Database.database().reference()
@@ -29,6 +30,7 @@ class SHUdhetareViewController: UIViewController {
     var isCenteredOnce = false
     var currentPlacemark: CLPlacemark?
     var currentLocation: CLLocationCoordinate2D?
+    var isRequesting = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,7 +52,6 @@ class SHUdhetareViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    @IBOutlet weak var mapView: MKMapView!
     
     //MARK: Update map for Matching driver or device
     func updateMap(for type: Int, lat: Double, lon: Double){
@@ -77,14 +78,16 @@ class SHUdhetareViewController: UIViewController {
     }
     //MARK:- Firebase
     func sendLocationToFIR(){
-        currentUser!.lat = currentLocation!.latitude
-        currentUser!.lon = currentLocation!.longitude
+        currentUser!.updateLocation(currentLocation!.latitude, lon: currentLocation!.longitude)
         ref.child("Users/\(FIRUserID)").updateChildValues(["lon" : currentLocation!.longitude , "lat" : currentLocation!.latitude])
     }
     
     @IBAction func requestButton(_ sender: Any) {
-        switch requestButton.currentTitle! {
-        case "Hajde Shoferaga":
+        startDriverRequest()
+    }
+    
+    func startDriverRequest(){
+        if !isRequesting {
             observeRequest()
             indicatorView.startAnimating()
             //TODO: kqrye qit tekst
@@ -102,19 +105,17 @@ class SHUdhetareViewController: UIViewController {
                                                 "Accepted" : false]
             
             ref.child("Request/\(FIRUserID)").setValue(userInfoDict)
-            requestButton.setTitle("Anulo", for: .normal)
-            return
-        case "Anulo":
+            isRequesting = true
+        }else{
             requestButton.isEnabled = false
             ref.child("Request/\(self.FIRUserID)").removeObserver(withHandle: self.postRefHandle)
             ref.child("Request/\(FIRUserID)").removeValue()
-            requestButton.setTitle("Hajde Shoferaga", for: .normal)
+            
+            isRequesting = false
+            
             indicatorView.stopAnimating()
             statusLabel.isHidden = true
             requestButton.isEnabled = true
-            return
-        default:
-            return
         }
     }
     
@@ -161,6 +162,10 @@ class SHUdhetareViewController: UIViewController {
     }
     
     @IBAction func finishButtonPressed(_ sender: Any) {
+        setJobAsFinished()
+    }
+    
+    func setJobAsFinished(){
         ref.child("InProgress/\(FIRUserID)").removeObserver(withHandle: postRefHandle)
         ref.child("InProgress/\(FIRUserID)").updateChildValues(["Udhetar-Finish": true])
         statusLabel.text = "Puna u kry"
@@ -169,7 +174,7 @@ class SHUdhetareViewController: UIViewController {
     
     func askToFinish(withData snapshotDict: [String : AnyObject]){
         ref.child("Completed").childByAutoId().setValue(snapshotDict)
-        let actionSheet = UIAlertController(title: "Shoferi e ka deklaru qe puna u kry", message: "", preferredStyle: .actionSheet)
+        let actionSheet = UIAlertController(title: "Shoferi ka deklaru qe puna u kry", message: "", preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(title: "Sbon mja prish", style: .default, handler: { (action: UIAlertAction ) in
             self.hideAndDisableFinishButton(true)

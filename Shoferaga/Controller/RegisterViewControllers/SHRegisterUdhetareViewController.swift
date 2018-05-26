@@ -39,53 +39,44 @@ class SHRegisterUdhetareViewController: UIViewController  {
     }
     
     @IBAction func registerButton(_ sender: Any) {
+        registerPassangerWithFirebase()
 
-        //TODO: Needs checks for textields, or maybe not
-        //TODO: Upload Picture
-        registerButton.isEnabled = false
-        Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
+}
+func registerPassangerWithFirebase(){
+    //TODO: Needs checks for textields, or maybe not
+    //TODO: Upload Picture
+    registerButton.isEnabled = false
+    Auth.auth().createUser(withEmail: emailTxtField.text!, password: passwordTxtField.text!) { (user, error) in
+        if error != nil{
+            SVProgressHUD.show(withStatus: "Error")
+            SVProgressHUD.dismiss(withDelay: 2)
+            self.registerButton.isEnabled = true
+            return
+        }
+        let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text! , "Email" : self.emailTxtField.text! , "Money" : 50 , "Worker" : false, "lat" : 0 , "lon" : 0]
+        
+        let udhetare = Udhetare(name: self.nameTxtField.text!, surname: self.surnameTxtField.text!, email: self.emailTxtField.text!, phoneNumber: self.phoneNumberTxtField.text!, money: 50, worker: false, lat: 0, lon: 0)
+        
+        let refID = user?.uid
+        Database.database().reference().child("Users/\(refID!)").setValue(userInfo, withCompletionBlock: { (error, ref) in
             if error != nil{
                 SVProgressHUD.show(withStatus: "Error")
                 SVProgressHUD.dismiss(withDelay: 2)
                 self.registerButton.isEnabled = true
-                return
+                
+            } else{
+                SVProgressHUD.show(withStatus: "Success")
+                SVProgressHUD.dismiss(withDelay: 1, completion: {
+                    let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHUdhetareViewController.className) as! SHUdhetareViewController
+                    udhetareVC.currentUser = udhetare
+                    self.navigationController?.pushViewController(udhetareVC, animated: true)
+                })
+                
             }
-            let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text! , "Email" : self.emailTxtField.text! , "Money" : 50 , "Worker" : false, "lat" : 0 , "lon" : 0]
-            
-            let udhetare = Udhetare()
-            udhetare.email = self.emailTxtField.text!
-            udhetare.lat = 0
-            udhetare.lon = 0
-            udhetare.money = 50
-            udhetare.name = self.nameTxtField.text!
-            udhetare.phoneNumber = self.phoneNumberTxtField.text!
-            udhetare.surname = self.surnameTxtField.text!
-            udhetare.worker = false
-            
-            let refID = user?.uid
-            Database.database().reference().child("Users/\(refID!)").setValue(userInfo, withCompletionBlock: { (error, ref) in
-                if error != nil{
-                    SVProgressHUD.show(withStatus: "Error")
-                    SVProgressHUD.dismiss(withDelay: 2)
-                    self.registerButton.isEnabled = true
-
-                } else{
-                    SVProgressHUD.show(withStatus: "Success")
-                    SVProgressHUD.dismiss(withDelay: 1, completion: {
-                        let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHUdhetareViewController.className) as! SHUdhetareViewController
-                        udhetareVC.currentUser = udhetare
-                        self.navigationController?.pushViewController(udhetareVC, animated: true)
-                    })
-
-                }
-            })
-            print("SAVED ALL")
-        }
-        
-        
+        })
+        print("SAVED ALL")
     }
-
-    
+    }
 }
 
 // MARK: - ImagePicker
