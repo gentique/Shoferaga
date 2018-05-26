@@ -34,23 +34,28 @@ class SHRegisterTaksistViewController: UIViewController {
     }
 
     @IBAction func registerButton(_ sender: Any) {
-
+        registerDriverWithFirebase()
     }
     func registerDriverWithFirebase(){
         
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextfield.text!) { (user, errorHere) in
-            
-            let userInfo: [String : Any] = ["Name" : self.userNameTextField.text!,
-                                            "Surname" : self.surnameTextField.text!,
-                                            "Phone Number" : self.phoneNumberTextField.text!,
-                                            "Email" : self.emailTextField.text!,
-                                            "Money" : 50 ,
-                                            "Worker" : true,
-                                            "lat" : 0,
-                                            "lon" : 0,
-                                            "Approved" : false]
-            Database.database().reference().child("Users/\(user!.uid)").setValue(userInfo)
-            print("SAVED ALL")
+            if errorHere != nil{
+                print("error")
+            }else{
+                let userInfo: [String : Any] = ["Name" : self.userNameTextField.text!,
+                                                "Surname" : self.surnameTextField.text!,
+                                                "Phone Number" : self.phoneNumberTextField.text!,
+                                                "Email" : self.emailTextField.text!,
+                                                "Money" : 50 ,
+                                                "Worker" : true,
+                                                "lat" : 0,
+                                                "lon" : 0,
+                                                "Approved" : false]
+                Database.database().reference().child("Users/\(user!.uid)").setValue(userInfo)
+                print("SAVED ALL")
+                let udhetareVC = self.storyboard?.instantiateViewController(withIdentifier: SHTaksistListViewController.className) as! SHTaksistListViewController
+                self.navigationController?.pushViewController(udhetareVC, animated: true)
+            }
         }
     }
     

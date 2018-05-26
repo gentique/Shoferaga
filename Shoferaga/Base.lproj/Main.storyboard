@@ -170,7 +170,7 @@
         <!--Taksist List View Controller-->
         <scene sceneID="Oot-L8-bIX">
             <objects>
-                <viewController id="w99-da-Oii" customClass="SHTaksistListViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SHTaksistListViewController" id="w99-da-Oii" customClass="SHTaksistListViewController" customModule="Shoferaga" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fEi-8y-DhR">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

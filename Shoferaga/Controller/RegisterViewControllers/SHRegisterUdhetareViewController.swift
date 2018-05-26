@@ -53,7 +53,14 @@ func registerPassangerWithFirebase(){
             self.registerButton.isEnabled = true
             return
         }
-        let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!, "Surname" : self.surnameTxtField.text!, "Phone Number" : self.phoneNumberTxtField.text! , "Email" : self.emailTxtField.text! , "Money" : 50 , "Worker" : false, "lat" : 0 , "lon" : 0]
+        let userInfo: [String : Any] = ["Name" : self.nameTxtField.text!,
+                                        "Surname" : self.surnameTxtField.text!,
+                                        "Phone Number" : self.phoneNumberTxtField.text!,
+                                        "Email" : self.emailTxtField.text!,
+                                        "Money" : 50,
+                                        "Worker" : false,
+                                        "lat" : 0,
+                                        "lon" : 0]
         
         let udhetare = Udhetare(name: self.nameTxtField.text!, surname: self.surnameTxtField.text!, email: self.emailTxtField.text!, phoneNumber: self.phoneNumberTxtField.text!, money: 50, worker: false, lat: 0, lon: 0)
         
@@ -71,7 +78,6 @@ func registerPassangerWithFirebase(){
                     udhetareVC.currentUser = udhetare
                     self.navigationController?.pushViewController(udhetareVC, animated: true)
                 })
-                
             }
         })
         print("SAVED ALL")
